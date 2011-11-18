@@ -8,6 +8,7 @@ module Amazon
       #xml_reader :amount, :in => :order_total, :as => Float
       #xml_reader :number_of_items_shipped, :as => Integer
       #xml_reader :number_of_items_unshipped, :as => Integer
+      #one more comment to test
     end 
   end
 end
