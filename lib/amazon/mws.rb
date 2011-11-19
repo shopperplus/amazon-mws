@@ -47,6 +47,7 @@ require 'mws/report_info'
 require 'mws/report_schedule'
 require 'mws/orders'
 require 'mws/orders_request'
+require 'mws/order_items_request'
 Dir.glob(File.join(File.dirname(__FILE__), 'mws/response/*.rb')).each {|f| require f }
 
 require 'mws/base'
@@ -69,6 +70,7 @@ end
 AWS = Amazon
 
 require_library_or_gem 'xmlsimple', 'xml-simple' unless defined? XmlSimple
+
 =begin
 # If libxml is installed, we use the FasterXmlSimple library, that provides most of the functionality of XmlSimple
 # except it uses the xml/libxml library for xml parsing (rather than REXML). If libxml isn't installed, we just fall back on

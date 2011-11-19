@@ -6,7 +6,7 @@ begin
     gemspec.summary = "A Ruby Wrapper for the Amazon MWS API"
     gemspec.description = "A Ruby Wrapper for the Amazon MWS API"
     gemspec.email = "david.michael@sonymusic.com"
-    gemspec.homepage = "http://github.com/dmichael/amazon-mws"
+    gemspec.homepage = "http://github.com/adamwible/amazon-mws"
     gemspec.authors = ["David Michael"]
   end
   Jeweler::GemcutterTasks.new

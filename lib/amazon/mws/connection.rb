@@ -33,10 +33,10 @@ module Amazon
         return http
       end
       
-      # Make the request, based on the apropriate request object
+      # Make the request, based on the appropriate request object
       # Called from Amazon::MWS::Base
       def request(verb, path, query_params, body = nil, attempts = 0, &block)
-		@path = path
+				@path = path
         # presumably this is for files
         body.rewind if body.respond_to?(:rewind) unless attempts.zero?
         # Prepare the Proc to be called by Net::HTTP

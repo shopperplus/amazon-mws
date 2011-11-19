@@ -14,8 +14,7 @@ module Amazon
         fulfillment_channel = params[:fulfillment_channel]
 				order_status = params[:order_status]
 				marketplace_id = params[:marketplace_id]
-
-      
+   
         query_params = {
           "Action"   => "ListOrders"
         }
@@ -42,9 +41,9 @@ module Amazon
 					i = 1
 					marketplace_id.to_a.each{|id| query_params.merge!({"MarketplaceId.Id.#{i}" => id}); i += 1 }
 				end
-            
+        
         response = post("/Orders/#{Authentication::VERSION}", query_params)
-        #RequestOrdersResponse.format(response)
+        RequestOrdersResponse.format(response)
       end
 			
       def get_orders_list_by_next_token(params ={})
@@ -57,6 +56,7 @@ module Amazon
 		      query_params.merge!({"NextToken" => next_token}) 
 				end
 				response = post("/Orders/#{Authentication::VERSION}", query_params)
+				RequestOrdersByNextTokenResponse.format(response)
       end
       
 			def get_list_order_items(params ={})
@@ -69,6 +69,21 @@ module Amazon
 		      query_params.merge!({"AmazonOrderId" => amazon_order_id}) 
 				end
 				response = post("/Orders/#{Authentication::VERSION}", query_params)
+				RequestOrderItemsResponse.format(response)
+      end
+
+			def get_list_order_items_by_next_token(params ={})
+        next_token = params[:next_token]
+        
+        query_params = {
+          "Action"   => "ListOrderItemsByNextToken"
+        }
+      	
+      	if next_token
+		    	query_params.merge!({"NextToken" => next_token}) 
+				end
+				response = post("/Orders/#{Authentication::VERSION}", query_params)
+				RequestOrderItemsResponse.format(response)
       end
 
 			def get_orders(params ={})
