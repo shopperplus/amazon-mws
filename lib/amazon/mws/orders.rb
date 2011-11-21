@@ -14,6 +14,7 @@ module Amazon
         fulfillment_channel = params[:fulfillment_channel]
 				order_status = params[:order_status]
 				marketplace_id = params[:marketplace_id]
+				raw_xml = params[:raw_xml]
    
         query_params = {
           "Action"   => "ListOrders"
@@ -43,11 +44,16 @@ module Amazon
 				end
         
         response = post("/Orders/#{Authentication::VERSION}", query_params)
-        RequestOrdersResponse.format(response)
+        if raw_xml
+        	return response
+        else
+        	RequestOrdersResponse.format(response)
+        end
       end
 			
       def get_orders_list_by_next_token(params ={})
         next_token = params[:next_token]
+        raw_xml = params[:raw_xml]
         
         query_params = {
           "Action"   => "ListOrdersByNextToken"
@@ -56,11 +62,16 @@ module Amazon
 		      query_params.merge!({"NextToken" => next_token}) 
 				end
 				response = post("/Orders/#{Authentication::VERSION}", query_params)
-				RequestOrdersByNextTokenResponse.format(response)
+				if raw_xml
+					return response
+				else
+					RequestOrdersByNextTokenResponse.format(response)
+				end
       end
       
 			def get_list_order_items(params ={})
         amazon_order_id = params[:amazon_order_id]
+        raw_xml = params[:raw_xml]
         
         query_params = {
           "Action"   => "ListOrderItems"
@@ -83,11 +94,16 @@ module Amazon
 		    	query_params.merge!({"NextToken" => next_token}) 
 				end
 				response = post("/Orders/#{Authentication::VERSION}", query_params)
-				RequestOrderItemsResponse.format(response)
+				if raw_xml
+					return response
+				else
+					RequestOrderItemsResponse.format(response)
+				end
       end
 
 			def get_orders(params ={})
         amazon_order_id = params[:amazon_order_id]
+        raw_xml = params[:raw_xml]
         
         query_params = {
           "Action"   => "GetOrder"
@@ -99,6 +115,11 @@ module Amazon
 				end
 				
 				response = post("/Orders/#{Authentication::VERSION}", query_params)
+				if raw_xml
+					return response
+				else
+					OrdersRequest.format(response)
+				end
       end
 
     end

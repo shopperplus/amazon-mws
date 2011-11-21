@@ -26,8 +26,18 @@ module Amazon
       def accessors
         roxml_references.map {|r| r.accessor}
       end
-      
-    end
 
+			#def self.instance_vars_to_hash
+			#	response_hash = {}
+			#	self.instance_variable_names.each do |n|
+			#		m = n.sub('@','')
+			#		if n != 'roxml_references'
+			#			response_hash[m.to_sym] = o.instance_variable_get(n)
+			#		end
+			#	end
+			#	return response_hash				
+			#end
+			      
+    end
   end
 end

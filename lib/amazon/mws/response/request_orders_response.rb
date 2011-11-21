@@ -17,8 +17,7 @@ module Amazon
       result = "ListOrdersByNextTokenResult"
       namespace = "xmlns:"
 
-		 	xml_reader :next_token, :in => result
-		 	
+		 	xml_reader :next_token, :in => result		 	
 		 	xml_reader :last_updated_before, :in => result, :as => DateTime
       xml_reader :request_id, :in => "ResponseMetadata"
 		 	xml_reader :orders, :as => [OrdersRequest], :in => namespace + result + "/" + namespace + "Orders"

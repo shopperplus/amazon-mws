@@ -15,19 +15,19 @@ module Amazon
 			xml_reader :order_channel
 			xml_reader :ship_service_level
 
-      xml_reader :amount, :in => :order_total, :as => Float
-      xml_reader :currency_code, :in => :order_total
+      xml_reader :amount, :in => "xmlns:OrderTotal", :as => Float
+      xml_reader :currency_code, :in => "xmlns:OrderTotal"
             
-			xml_reader :address_line_1, :in => :shipping_address
-			xml_reader :address_line_2, :in => :shipping_address
-			xml_reader :address_line_3, :in => :shipping_address
-			xml_reader :city, :in => :shipping_address
-			xml_reader :county, :in => :shipping_address
-			xml_reader :district, :in => :shipping_address
-			xml_reader :state_or_region, :in => :shipping_address
-			xml_reader :postal_code, :in => :shipping_address
-			xml_reader :country_code, :in => :shipping_address
-			xml_reader :phone, :in => :shipping_address
+			xml_reader :address_line_1, :in => "xmlns:ShippingAddress"
+			xml_reader :address_line_2, :in => "xmlns:ShippingAddress"
+			xml_reader :address_line_3, :in => "xmlns:ShippingAddress"
+			xml_reader :city, :in => "xmlns:ShippingAddress"
+			xml_reader :county, :in => "xmlns:ShippingAddress"
+			xml_reader :district, :in => "xmlns:ShippingAddress"
+			xml_reader :state_or_region, :in => "xmlns:ShippingAddress"
+			xml_reader :postal_code, :in => "xmlns:ShippingAddress"
+			xml_reader :country_code, :in => "xmlns:ShippingAddress"
+			xml_reader :phone, :in => "xmlns:ShippingAddress"
 
       xml_reader :number_of_items_shipped, :as => Integer
       xml_reader :number_of_items_unshipped, :as => Integer
