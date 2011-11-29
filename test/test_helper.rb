@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'rubygems'
-
+require 'pathname'
 require 'yaml'
 #require 'fakeweb'
 

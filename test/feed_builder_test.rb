@@ -1,4 +1,5 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
+#require File.join(File.dirname(__FILE__), 'test_helper')
+require 'test_helper'
 
 class FeedTest < Test::Unit::TestCase
   def setup
@@ -15,7 +16,7 @@ class FeedTest < Test::Unit::TestCase
         "NestedArray" => [{"NA1"=> 1}, {"NA2"=> 2}]
     } ,
     ];
-    puts AWS::MWS::FeedBuilder.new(:product, msgs).render
+    puts Amazon::MWS::FeedBuilder.new(:product, msgs).render
     # puts feed.xml
   end
 end

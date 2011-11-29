@@ -9,7 +9,7 @@ class Amazon::MWS::Authentication
         'SignatureMethod'  => Signature::METHOD,
         'SignatureVersion' => Signature::VERSION,
         'Timestamp'        => Time.now.iso8601,
-        'Version'          => '2009-01-01'
+        'Version'          => Amazon::MWS::Authentication::VERSION
       }
       
       # Add any params that are passed in via uri before calculating the signature

@@ -1,4 +1,5 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
+#require File.join(File.dirname(__FILE__), 'test_helper')
+require 'test_helper'
 
 class MockSignature
 end
@@ -9,7 +10,7 @@ class QueryStringTest < Test::Unit::TestCase
   end
   
   def test_expected_string
-    string = AWS::MWS::Authentication::QueryString.new(
+    string = Amazon::MWS::Authentication::QueryString.new(
       :access_key => 'opensesame',
       :marketplace_id => '9876',
       :merchant_id => '12345',

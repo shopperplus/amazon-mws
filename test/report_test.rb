@@ -1,4 +1,5 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
+#require File.join(File.dirname(__FILE__), 'test_helper')
+require 'test_helper'
 require 'yaml'
 
 
@@ -7,12 +8,13 @@ include Amazon::MWS
   
 class FeedTest < Test::Unit::TestCase
   def setup
+    # TODO no mws.yml
     config = YAML.load_file( File.join(File.dirname(__FILE__), '../lib/amazon/mws.yml') )
     
-    AWS::MWS::Base.establish_connection!(
+    Amazon::MWS::Base.establish_connection!(
       config['production']
     )
-    AWS::MWS::Base.debug = true
+    Amazon::MWS::Base.debug = true
   end
   
   def test_request

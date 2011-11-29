@@ -10,15 +10,7 @@ require 'hmac-sha2'
 require 'base64'
 require 'builder'
 require "rexml/document"
-
-# ROXML - nokogiri and roxml are the only dependencies
-I_KNOW_I_AM_USING_AN_OLD_AND_BUGGY_VERSION_OF_LIBXML2 = true
-# module ROXML
-#   XML_PARSER = 'nokogiri' # or 'libxml'
-# end
 require 'roxml'
-# /ROXML
-
 
 $:.unshift(File.dirname(__FILE__))
 require 'mws/lib/extensions'
@@ -29,8 +21,6 @@ module Amazon
   module MWS
   end
 end
-
-
 
 require 'mws/lib/memoizable'
 
@@ -67,7 +57,7 @@ Amazon::MWS::Base.class_eval do
 	include Amazon::MWS::Orders
 end
 
-AWS = Amazon
+#AWS = Amazon
 
 require_library_or_gem 'xmlsimple', 'xml-simple' unless defined? XmlSimple
 
