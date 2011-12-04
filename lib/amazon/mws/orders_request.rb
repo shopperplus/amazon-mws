@@ -35,7 +35,6 @@ module Amazon
 			xml_reader :marketplace_id
 			xml_reader :buyer_name
 			xml_reader :buyer_email
-			xml_reader :ship_service_level_category
 			xml_reader :shipment_service_level_category
 
     end 
