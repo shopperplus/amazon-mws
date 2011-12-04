@@ -18,6 +18,7 @@ module Amazon
       xml_reader :amount, :in => "xmlns:OrderTotal", :as => Float
       xml_reader :currency_code, :in => "xmlns:OrderTotal"
             
+			xml_reader :name, :in => "xmlns:ShippingAddress"            
 			xml_reader :address_line_1, :in => "xmlns:ShippingAddress"
 			xml_reader :address_line_2, :in => "xmlns:ShippingAddress"
 			xml_reader :address_line_3, :in => "xmlns:ShippingAddress"
@@ -35,6 +36,7 @@ module Amazon
 			xml_reader :buyer_name
 			xml_reader :buyer_email
 			xml_reader :ship_service_level_category
+			xml_reader :shipment_service_level_category
 
     end 
   end
