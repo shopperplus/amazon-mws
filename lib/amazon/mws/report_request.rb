@@ -1,6 +1,6 @@
 module Amazon
   module MWS
-    
+
     class ReportRequest < Response
       xml_name "ReportRequestInfo"
 
@@ -15,6 +15,6 @@ module Amazon
       #xml_reader :started_processing_date, :as => Time
       #xml_reader :completed_processing_date, :as => Time
     end
-    
+
   end
 end

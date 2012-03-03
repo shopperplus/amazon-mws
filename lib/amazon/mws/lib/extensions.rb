@@ -11,7 +11,7 @@ class String
       false
     end
   end
-  
+
   def to_boolean
     (self == "true") ? true : false
   end
@@ -32,7 +32,7 @@ class String
       self.to_s.first.downcase + camelize(lower_case_and_underscored_word)[1..-1]
     end
   end
-  
+
   def underscore
     self.gsub(/::/, '/').
     gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
@@ -48,24 +48,24 @@ class Hash
     parts = query.split(/&|=/)
     Hash[*parts]
   end
-  
+
   #take keys of hash and transform those to a symbols
   def self.keys_to_s(value)
     return value if not value.is_a?(Hash)
     hash = value.inject({}){|memo,(k,v)| memo[k.to_s] = Hash.keys_to_s(v); memo}
     return hash
   end
-  
+
 end
 
 class Array
   def extract_options!
     last.is_a?(::Hash) ? pop : {}
   end
-  
+
   def to_query_string
     self.map { |k| "%s=%s" % [URI.encode(k[0].to_s), URI.encode(k[1].to_s)] }.join('&') unless self.empty?
-  end 
+  end
 end
 
 class Hash
@@ -85,15 +85,15 @@ module Kernel
   def __method__(depth = 0)
     caller[depth][/`([^']+)'/, 1]
   end if RUBY_VERSION <= '1.8.7'
-  
+
   def __called_from__
     caller[1][/`([^']+)'/, 1]
   end if RUBY_VERSION > '1.8.7'
-  
+
   def expirable_memoize(reload = false, storage = nil)
     current_method = RUBY_VERSION > '1.8.7' ? __called_from__ : __method__(1)
     storage = "@#{storage || current_method}"
-    if reload 
+    if reload
       instance_variable_set(storage, nil)
     else
       if cache = instance_variable_get(storage)
@@ -105,7 +105,7 @@ module Kernel
 
   def require_library_or_gem(library, gem_name = nil)
     if RUBY_VERSION >= '1.9'
-      gem(gem_name || library, '>=0') 
+      gem(gem_name || library, '>=0')
     end
     require library
   rescue LoadError => library_not_installed

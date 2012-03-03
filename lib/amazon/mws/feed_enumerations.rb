@@ -3,7 +3,7 @@ module Amazon
     module Feed
 
     module Enumerations
-      
+
       # Note: We do not handle flat file feed types
       FEED_TYPES = {
         :product_data              => '_POST_PRODUCT_DATA_',
@@ -40,7 +40,7 @@ module Amazon
       ]
 
     end
-    
+
     end
   end
 end

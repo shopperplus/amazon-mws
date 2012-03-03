@@ -10,6 +10,6 @@ module Amazon
       xml_reader :reports, :as => [ReportInfo], :in => result
       xml_reader :request_id, :in => "ResponseMetadata"
     end
-    
+
   end
 end

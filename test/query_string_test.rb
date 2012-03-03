@@ -7,7 +7,7 @@ class QueryStringTest < MiniTest::Unit::TestCase
   def setup
     # need a stub for Signature!
   end
-  
+
   def test_expected_string
     string = Amazon::MWS::Authentication::QueryString.new(
       :access_key => 'opensesame',
@@ -15,7 +15,7 @@ class QueryStringTest < MiniTest::Unit::TestCase
       :merchant_id => '12345',
       :uri => URI.parse('/')
     )
-    
+
     assert_kind_of(String, string)
   end
 end

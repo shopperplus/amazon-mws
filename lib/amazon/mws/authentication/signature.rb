@@ -1,8 +1,8 @@
 class Amazon::MWS::Authentication
-  
+
   class Signature < String#:nodoc:
     extend Memoizable
-    
+
     VERSION = '2'
     METHOD  = 'HmacSHA256'
 
@@ -13,7 +13,7 @@ class Amazon::MWS::Authentication
       string = string_to_sign(verb, canonical_querystring(queryparams), params[:server], params[:path])
       self << sign(string, secret)
     end
-  
+
     # Returns a signed string
     def sign(string, secret_access_key)
       hmac = HMAC::SHA256.new(secret_access_key)
@@ -21,14 +21,14 @@ class Amazon::MWS::Authentication
       # chomp is important!  the base64 encoded version will have a newline at the end
       Base64.encode64(hmac.digest).chomp
     end
-    
+
     memoize :sign
-    
+
     def string_to_sign(verb, querystring, server, path)
       verb   = verb.to_s.upcase
       string = "#{verb}\n#{server}\n#{path}\n#{querystring}"
     end
-    
+
     memoize :string_to_sign
 
     def canonical_querystring(params)
@@ -36,8 +36,8 @@ class Amazon::MWS::Authentication
       params = Hash.keys_to_s(params)
       params.sort.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&')
     end
-    
+
     memoize :canonical_querystring
   end
-  
+
 end
