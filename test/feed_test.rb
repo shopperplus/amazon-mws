@@ -1,12 +1,8 @@
-#require File.join(File.dirname(__FILE__), 'test_helper')
 require 'test_helper'
-# flatten the namespace
-require 'mocha'
-include Amazon::MWS
 
 Amazon::MWS::Base.debug = true
 
-class FeedTest < Test::Unit::TestCase 
+class FeedTest < MiniTest::Unit::TestCase
   def setup
     config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )
     @marketplace = Amazon::MWS::Base.new(config)

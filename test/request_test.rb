@@ -1,10 +1,8 @@
-#require File.join(File.dirname(__FILE__), 'test_helper')
 require 'test_helper'
-require 'yaml'
 
 Amazon::MWS::Base.debug = true
 
-class RequestTest < Test::Unit::TestCase
+class RequestTest < MiniTest::Unit::TestCase
   def setup
     # TODO no mws.yml right now
     config = YAML.load_file( File.join(File.dirname(__FILE__), '../lib/amazon/mws.yml') )

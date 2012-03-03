@@ -17,11 +17,6 @@ require 'mws/lib/extensions'
 require 'builder'
 #require_library_or_gem 'mime/types', 'mime-types' unless defined? MIME::Types
 
-module Amazon
-  module MWS
-  end
-end
-
 require 'mws/lib/memoizable'
 
 require 'mws/feed_builder'

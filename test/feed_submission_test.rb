@@ -1,7 +1,6 @@
 require 'test_helper'
-require 'yaml'
 
-class FeedSubmissionTest < Test::Unit::TestCase
+class FeedSubmissionTest < MiniTest::Unit::TestCase
   def setup
     # TODO there is no mws.yml file right now
     config = YAML.load_file( File.join(File.dirname(__FILE__), '../lib/amazon/mws.yml') )

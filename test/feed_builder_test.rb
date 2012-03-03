@@ -1,7 +1,6 @@
-#require File.join(File.dirname(__FILE__), 'test_helper')
 require 'test_helper'
 
-class FeedTest < Test::Unit::TestCase
+class FeedTest < MiniTest::Unit::TestCase
   def setup
   end
   

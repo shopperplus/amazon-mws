@@ -1,7 +1,6 @@
-#require File.join(File.dirname(__FILE__), 'test_helper')
 require 'test_helper'
 
-class AuthenticationTest < Test::Unit::TestCase
+class AuthenticationTest < MiniTest::Unit::TestCase
   def setup
     @request       			= Net::HTTP::Get.new(Amazon::MWS::DEFAULT_HOST)
     @access_key_id 			= "yyy"

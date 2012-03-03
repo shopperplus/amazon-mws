@@ -1,12 +1,6 @@
-#require File.join(File.dirname(__FILE__), 'test_helper')
 require 'test_helper'
-require 'yaml'
 
-
-# import the namespace
-include Amazon::MWS
-  
-class FeedTest < Test::Unit::TestCase
+class FeedTest < MiniTest::Unit::TestCase
   def setup
     # TODO no mws.yml
     config = YAML.load_file( File.join(File.dirname(__FILE__), '../lib/amazon/mws.yml') )

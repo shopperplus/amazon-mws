@@ -1,17 +1,15 @@
 require 'test_helper'
 
-include Amazon::MWS
-
-class ResponseTest < Test::Unit::TestCase
+class ResponseTest < MiniTest::Unit::TestCase
   
   def test_submit_feed_response
     response = SubmitFeedResponse.format(xml_for('submit_feed'))
-    
+
     assert_equal(response.feed_submission.id, 2291326430)
     assert_equal(response.feed_submission.feed_type, '_POST_PRODUCT_DATA_')
     assert_equal(response.request_id, '75424a38-f333-4105-98f0-2aa9592d665c')
   end
-
+  
   def test_feed_submission_list_response
     response = GetFeedSubmissionListResponse.format(xml_for('get_feed_submission_list'))
     
@@ -97,12 +95,12 @@ class ResponseTest < Test::Unit::TestCase
     assert_equal("732480cb-84a8-4c15-9084-a46bd9a0889b", response.request_id)
     assert_equal('none', response.next_token)
     assert_equal(false, response.has_next?) # same as false ???
-
+  
     assert_equal(1, response.report_requests.size)
     assert_equal(2291326454, response.report_requests.first.id)
     assert_equal('732480cb-84a8-4c15-9084-a46bd9a0889b', response.request_id)
   end
-
+  
   def test_get_report_request_count
     response = GetReportRequestCountResponse.format(xml_for('get_report_request_count'))
   
@@ -145,7 +143,7 @@ class ResponseTest < Test::Unit::TestCase
   
     assert_equal(1, response.count)
     assert_equal('7ee1bc50-5a13-4db1-afd7-1386e481984e', response.request_id)
-
+  
     assert(response.report_schedule)
     assert_equal('_GET_ORDERS_DATA_', response.report_schedule.report_type)
     assert_equal('_30_DAYS_', response.report_schedule.schedule) 
@@ -172,7 +170,7 @@ class ResponseTest < Test::Unit::TestCase
     assert_equal("c0464157-b74f-4e52-bd1a-4ebf4bc7e5aa", response.request_id)
     assert_equal('none', response.next_token)
     assert_equal(false, response.has_next?) # same as false ???
-
+  
     assert_equal(1, response.report_schedules.size)
     # assert_equal(13050620, response.report_schedules[0].id)
     assert_equal('c0464157-b74f-4e52-bd1a-4ebf4bc7e5aa', response.request_id)

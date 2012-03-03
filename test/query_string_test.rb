@@ -1,10 +1,9 @@
-#require File.join(File.dirname(__FILE__), 'test_helper')
 require 'test_helper'
 
 class MockSignature
 end
 
-class QueryStringTest < Test::Unit::TestCase
+class QueryStringTest < MiniTest::Unit::TestCase
   def setup
     # need a stub for Signature!
   end
