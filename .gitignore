@@ -1,2 +1,7 @@
+*.gem
+.bundle
+coverage/*
+examples/*
+Gemfile.lock
 mws.yml
-examples/
+pkg/*

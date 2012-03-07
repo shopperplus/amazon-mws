@@ -9,32 +9,32 @@
     to list products for sale on the www.amazon.com web site pursuant to an agreement 
     with Amazon.com.
     -->
-	<xsd:include schemaLocation="amzn-base.xsd"/>
-	<xsd:element name="PetSupplies">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="ProductType">
-					<xsd:complexType>
-						<xsd:choice>
-							<xsd:element ref="PetSuppliesMisc"/>
-						</xsd:choice>
-					</xsd:complexType>
-				</xsd:element>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="PetSuppliesMisc">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="ColorSpecification" minOccurs="0"/>
-				<xsd:element name="Ingredients" type="LongStringNotNull" minOccurs="0"/>
-				<xsd:element name="ItemPackageQuantity" type="xsd:positiveInteger" default="1" minOccurs="0"/>
-				<xsd:element name="Material" type="StringNotNull" minOccurs="0"/>
-				<xsd:element name="Size" type="StringNotNull" minOccurs="0"/>
-				<xsd:element name="Volume" type="VolumeDimension" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+  <xsd:include schemaLocation="amzn-base.xsd"/>
+  <xsd:element name="PetSupplies">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ProductType">
+          <xsd:complexType>
+            <xsd:choice>
+              <xsd:element ref="PetSuppliesMisc"/>
+            </xsd:choice>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PetSuppliesMisc">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ColorSpecification" minOccurs="0"/>
+        <xsd:element name="Ingredients" type="LongStringNotNull" minOccurs="0"/>
+        <xsd:element name="ItemPackageQuantity" type="xsd:positiveInteger" default="1" minOccurs="0"/>
+        <xsd:element name="Material" type="StringNotNull" minOccurs="0"/>
+        <xsd:element name="Size" type="StringNotNull" minOccurs="0"/>
+        <xsd:element name="Volume" type="VolumeDimension" minOccurs="0"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
 </xsd:schema>
 
 

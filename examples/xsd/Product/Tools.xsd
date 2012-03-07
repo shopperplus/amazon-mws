@@ -6,9 +6,9 @@
     $Date: 2005/04/01 $
 
     AMAZON.COM CONFIDENTIAL.  This document and the information contained in it are
-    confidential and proprietary information of Amazon.com and may not be reproduced, 
-    distributed or used, in whole or in part, for any purpose other than as necessary 
-    to list products for sale on the www.amazon.com web site pursuant to an agreement 
+    confidential and proprietary information of Amazon.com and may not be reproduced,
+    distributed or used, in whole or in part, for any purpose other than as necessary
+    to list products for sale on the www.amazon.com web site pursuant to an agreement
     with Amazon.com.
     -->
 
@@ -24,7 +24,7 @@
                 <xsd:element name="Width" type="LengthDimension" minOccurs="0"/>
                 <xsd:element name="Height" type="LengthDimension" minOccurs="0"/>
                 <xsd:element name="Weight" type="WeightDimension" minOccurs="0"/>
-                
+
                 <xsd:element name="PowerSource" minOccurs="0" maxOccurs="2">
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">
@@ -32,20 +32,17 @@
                             <xsd:enumeration value="gas-powered"/>
                             <xsd:enumeration value="hydraulic-powered"/>
                             <xsd:enumeration value="air-powered"/>
-                            <xsd:enumeration value="corded-electric"/>                            
+                            <xsd:enumeration value="corded-electric"/>
                         </xsd:restriction>
                     </xsd:simpleType>
                 </xsd:element>
-                
+
                 <xsd:element name="Wattage" type="xsd:positiveInteger" minOccurs="0"/>
                 <xsd:element name="Voltage" type="xsd:positiveInteger" minOccurs="0"/>
                 <xsd:element name="NumberOfItemsInPackage" type="xsd:positiveInteger" minOccurs="0"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
-
-
-
 
     <!--
      ###############################################################
@@ -59,7 +56,6 @@
             <xsd:fractionDigits value="2" fixed="true"/>
         </xsd:restriction>
     </xsd:simpleType>
-
 
 </xsd:schema>
 

@@ -22,8 +22,6 @@ These classes are modeled after aspects of AWS::S3 => http://amazon.rubyforge.or
 Description
 ===========
 
-
-
 Enjoy!
 
 Usage
