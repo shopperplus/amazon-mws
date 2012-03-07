@@ -9,6 +9,6 @@ module Amazon
       xml_reader :feed_submissions, :as => [FeedSubmission], :in => result
       xml_reader :request_id, :in => "ResponseMetadata"
     end
-    
+
   end
 end

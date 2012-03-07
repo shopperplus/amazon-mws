@@ -1,6 +1,6 @@
 module Amazon
   module MWS
-      
+
     class ReportSchedule < Response
       xml_name "ReportSchedule"
 
@@ -8,6 +8,6 @@ module Amazon
       xml_reader :schedule
       xml_reader :scheduled_date, :as => Time
     end
-    
+
   end
 end

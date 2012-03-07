@@ -6,9 +6,9 @@
     $Date: 2005/04/01 $
 
     AMAZON.COM CONFIDENTIAL.  This document and the information contained in it are
-    confidential and proprietary information of Amazon.com and may not be reproduced, 
-    distributed or used, in whole or in part, for any purpose other than as necessary 
-    to list products for sale on the www.amazon.com web site pursuant to an agreement 
+    confidential and proprietary information of Amazon.com and may not be reproduced,
+    distributed or used, in whole or in part, for any purpose other than as necessary
+    to list products for sale on the www.amazon.com web site pursuant to an agreement
     with Amazon.com.
     -->
 
@@ -16,7 +16,7 @@
 
     <xsd:element name="Miscellaneous">
       <xsd:complexType>
-	<xsd:sequence>
+  <xsd:sequence>
           <xsd:element name="ProductType" type="MiscType"/>
           <xsd:element name="ProductCategory" type="MiscType" minOccurs="0"/>
           <xsd:element name="ProductSubcategory" type="MiscSubtype" minOccurs="0"/>
@@ -28,10 +28,10 @@
           <xsd:element name="ModelName" type="FortyStringNotNull" minOccurs="0"/>
           <xsd:element name="ModelNumber" type="FortyStringNotNull" minOccurs="0"/>
           <xsd:element name="MfrPartNumber" type="FortyStringNotNull" minOccurs="0"/>
-	</xsd:sequence>
+  </xsd:sequence>
       </xsd:complexType>
     </xsd:element>
- 
+
     <xsd:simpleType name="MiscType">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="Antiques"/>
@@ -67,7 +67,7 @@
             <xsd:enumeration value="Misc_Other"/>
         </xsd:restriction>
     </xsd:simpleType>
- 
+
     <xsd:simpleType name="MiscSubtype">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="Decorative_Arts"/>

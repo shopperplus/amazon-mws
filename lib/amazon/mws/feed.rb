@@ -1,6 +1,6 @@
 module Amazon
   module MWS
-    
+
     module Feed
       include Enumerations
       # class << self
@@ -13,41 +13,41 @@ module Amazon
       # although you can successfully call SubmitFeed up to 30 times per
       # hour. Feed size is limited to 2,147,483,647 bytes (2^32 -1) per
       # feed.
-      
+
       def submit_flat_file_feed(records)
         header = "sku\tproduct-id\tproduct-id-type\tprice\titem-condition\tquantity\tadd-delete\twill-ship-internationally\texpedited-shipping\titem-note\tfulfillment-center-id"
         puts ([header] + records).join("\r")
         response =
           post("/", {
-          "Action"   => "SubmitFeed", 
+          "Action"   => "SubmitFeed",
           "FeedType" => "_POST_FLAT_FILE_INVLOADER_DATA_"
         }, ([header] + records).join("\r"))
         result = SubmitFeedResponse.format(response)
       end
-      
+
       def submit_feed(feed_type, message_type, message = {})
         message_type= message_type.to_s.camelize
         raise InvalidMessageType if !MESSAGE_TYPES.include?(message_type)
-  
+
         raise "Missing merchant_id" unless @merchant_id
         body = Amazon::MWS::FeedBuilder.new(message_type, message, {:merchant_id => @merchant_id}).render
-        
+
         response =
           post("/", {
-          "Action"   => "SubmitFeed", 
+          "Action"   => "SubmitFeed",
           "FeedType" => FEED_TYPES[feed_type]
         }, body)
-      
+
         result = SubmitFeedResponse.format(response)
       end
-    
+
       alias_method :submit, :submit_feed
 
       # The GetFeedSubmissionList operation returns the total list of feed
       # submissions within the previous 90 days that match the query
       # parameters. Amazon MWS limits calls to 1,000 total calls per hour
       # per seller account, including calls to GetFeedSubmissionList.
-      # 
+      #
       # The maximum number of results that will be returned in one call is
       # one hundred. If there are additional results to return, HasNext will
       # be returned in the response with a true value. To retrieve all the
@@ -72,7 +72,7 @@ module Amazon
       # FeedProcessingStatusList
       # A structured list of one or more feed processing statuses by which
       #  to filter feed submissions. Valid values are:
-      # 
+      #
       # _SUBMITTED_
       # _IN_PROGRESS_
       # _CANCELLED_
@@ -87,11 +87,11 @@ module Amazon
       # The latest submission date you are looking for, in ISO8601 date
       # format (for example, "2008-07-03T18:12:22Z" or
       # "2008-07-03T18:12:22.093-07:00").
-      
+
       def get_feed_submission_list(params = {})
-       response = 
+       response =
        get("/", {"Action" => "GetFeedSubmissionList"}.merge(params))
-       
+
        result = GetFeedSubmissionListResponse.format(response)
       end
 
@@ -102,22 +102,22 @@ module Amazon
       # NextToken, which was supplied by a previous call to either
       # GetFeedSubmissionListByNextToken or a call to GetFeedSubmissionList,
       # where the value of HasNext was true in that previous call.
-      #  
+      #
       # Request Parameters
-      # ------------------       
+      # ------------------
       # NextToken
       # Token returned in a previous call to either GetFeedSubmissionList or
       # GetFeedSubmissionListByNextToken when the value of HasNext was true.
       def get_feed_submission_list_by_next_token(next_token)
-        response = 
+        response =
          get("/", {
-           "Action"   => "GetFeedSubmissionListByNextToken", 
+           "Action"   => "GetFeedSubmissionListByNextToken",
            "NextToken" => next_token
          })
-         
+
          GetFeedSubmissionListByNextTokenResponse.format(response)
       end
-      
+
       alias_method :feed_submission_list_by_next_token, :get_feed_submission_list_by_next_token
 
       # The GetFeedsubmissionCount operation returns a count of the total
@@ -132,7 +132,7 @@ module Amazon
       # FeedProcessingStatusList
       # A structured list of one or more feed processing statuses by which
       # to filter feed submissions. Valid values are:
-      # 
+      #
       # _SUBMITTED_
       # _IN_PROGRESS_
       # _CANCELLED_
@@ -147,16 +147,15 @@ module Amazon
       # The latest submission date you are looking for, in ISO8601 date
       # format (for example, "2008-07-03T18:12:22Z" or
       # "2008-07-03T18:12:22.093-07:00").
-      
+
       def get_feed_submission_count(params = {})
-        response = 
+        response =
         get("/", {"Action" => "GetFeedSubmissionCount"}.merge(params))
-        
+
         GetFeedSubmissionCountResponse.format(response)
       end
-      
+
       alias_method :feed_submission_count, :get_feed_submission_count
-      
 
       # The CancelFeedSubmissions operation cancels one or more feed
       # submissions, returning the count of the canceled feed submissions
@@ -192,7 +191,7 @@ module Amazon
       # "2008-07-03T18:12:22.093-07:00").
 
       def cancel_feed_submissions(params = {})
-        response = 
+        response =
         get("/", {"Action" => "CancelFeedSubmissions"}.merge(params))
 
         CancelFeedSubmissionsResponse.format(response)
@@ -214,11 +213,11 @@ module Amazon
       # FeedSubmissionId
       # The identifier of the feed submission to get results for. Obtained
       # by a call to GetFeedSubmissionList.
-      
+
       def get_feed_submission_result(feed_submission_id, params = {})
-        response = 
+        response =
         get("/", {
-          "Action"           => "GetFeedSubmissionResult", 
+          "Action"           => "GetFeedSubmissionResult",
           "FeedSubmissionId" => feed_submission_id
         }.merge(params))
 
@@ -227,9 +226,9 @@ module Amazon
 
       alias_method :feed_submission_result, :get_feed_submission_result
     end
-    
+
     # end
     # Feed
-    
+
   end
 end
