@@ -222,7 +222,7 @@ module Amazon
       
       def get_report(report_id, params = {})
         response = get("/", {"Action" => "GetReport", "ReportId" => report_id})
-        # TODO format response
+        #TODO format response
       end
       alias_method :report, :get_report
 
