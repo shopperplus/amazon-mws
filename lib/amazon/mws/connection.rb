@@ -18,7 +18,7 @@ module Amazon
         @secret_access_key = params['secret_access_key']
         @merchant_id       = params['merchant_id']
         @marketplace_id    = params['marketplace_id']
-    @path = '/'
+    		@path 						 = '/'
 
         raise MissingConnectionOptions if [@access_key, @secret_access_key, @merchant_id, @marketplace_id].any? {|option| option.nil?}
 

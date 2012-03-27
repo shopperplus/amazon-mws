@@ -3,7 +3,7 @@ module Amazon
 
     module Report
       include Enumerations
-      # class << self
+      class << self
 
       # The RequestReport operation requests the generation of a report, which
       # creates a report request. Reports are retained for 90 days.
@@ -303,6 +303,6 @@ module Amazon
 
     end
 
-    # end
+     end
   end
 end

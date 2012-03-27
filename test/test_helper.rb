@@ -18,14 +18,21 @@ require File.join(File.dirname(__FILE__), '..', 'lib', 'amazon', 'mws')
 
 include Amazon::MWS
 
-def xml_for(name)
-  Pathname.new(File.dirname(__FILE__)).expand_path.dirname.join("examples/xml/#{name}.xml")
+#class MiniTest::Unit::TestCase
+#class ActiveSupport::TestCase
+#	@config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']
+#  @connection = Amazon::MWS::Base.new(@config)
+#  Amazon::MWS::Base.debug = true
+#end
+
+def xml_for(name, code)
+  file = File.open(Pathname.new(File.dirname(__FILE__)).expand_path.dirname.join("examples/xml/#{name}.xml"),'rb')
+  mock_response(code, {:content_type=>'text/xml', :body=>file.read})
 end
 
 def mock_response(code, options={})
   body = options[:body]
   content_type = options[:content_type]
-
   response = Net::HTTPResponse.send(:response_class, code.to_s).new("1.0", code.to_s, "message")
   response.instance_variable_set(:@body, body)
   response.instance_variable_set(:@read, true)

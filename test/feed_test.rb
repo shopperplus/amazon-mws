@@ -4,8 +4,9 @@ Amazon::MWS::Base.debug = true
 
 class FeedTest < MiniTest::Unit::TestCase
   def setup
-    config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )
-    @marketplace = Amazon::MWS::Base.new(config)
+		@config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']
+		@connection = Amazon::MWS::Base.new(@config)
+		Amazon::MWS::Base.debug = true
   end
 
   #def test_submit_feed
@@ -14,20 +15,14 @@ class FeedTest < MiniTest::Unit::TestCase
   #end
 
   def test_get_feed_submission_list_failure
-    @marketplace.stubs(:get).returns(
-      mock_response(401, :body => File.read(xml_for('error')), :content_type => "text/xml")
-    )
-
-    response = @marketplace.submission_list
+    @connection.stubs(:get).returns(xml_for('error',401))
+    response = @connection.get_feed_submission_list
     assert_kind_of(ResponseError, response)
   end
 
   def test_get_feed_submission_list_success
-    @marketplace.stubs(:get).returns(
-      mock_response(200, :body => File.read(xml_for('get_feed_submission_list')), :content_type => "text/xml")
-    )
-
-    response = @marketplace.submission_list
+    @connection.stubs(:get).returns(xml_for('get_feed_submission_list',200))
+    response = @connection.get_feed_submission_list
     assert_kind_of(GetFeedSubmissionListResponse, response)
   end
 

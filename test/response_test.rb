@@ -3,7 +3,7 @@ require 'test_helper'
 class ResponseTest < MiniTest::Unit::TestCase
 
   def test_submit_feed_response
-    response = SubmitFeedResponse.format(xml_for('submit_feed'))
+    response = SubmitFeedResponse.format(xml_for('submit_feed',200))
 
     assert_equal(response.feed_submission.id, 2291326430)
     assert_equal(response.feed_submission.feed_type, '_POST_PRODUCT_DATA_')
@@ -11,7 +11,7 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_feed_submission_list_response
-    response = GetFeedSubmissionListResponse.format(xml_for('get_feed_submission_list'))
+    response = GetFeedSubmissionListResponse.format(xml_for('get_feed_submission_list',200))
 
     assert_equal("1105b931-6f1c-4480-8e97-f3b467840a9e", response.request_id)
     assert(response.has_next?)
@@ -21,7 +21,7 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_feed_submission_list_by_next_token
-    response = GetFeedSubmissionListByNextTokenResponse.format(xml_for('get_feed_submission_list_by_next_token'))
+    response = GetFeedSubmissionListByNextTokenResponse.format(xml_for('get_feed_submission_list_by_next_token',200))
 
     assert_equal("1105b931-6f1c-4480-8e97-f3b467840a9e", response.request_id)
     assert_equal(false, response.has_next?) # same as false ???
@@ -32,14 +32,14 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_feed_submission_count
-    response = GetFeedSubmissionCountResponse.format(xml_for('get_feed_submission_count'))
+    response = GetFeedSubmissionCountResponse.format(xml_for('get_feed_submission_count',200))
 
     assert_equal(463, response.count)
     assert_equal('21e482a8-15c7-4da3-91a4-424995ed0756', response.request_id)
   end
 
   def test_cancel_feed_submissions
-    response = CancelFeedSubmissionsResponse.format(xml_for('cancel_feed_submissions'))
+    response = CancelFeedSubmissionsResponse.format(xml_for('cancel_feed_submissions',200))
 
     assert_equal(1, response.count)
     assert_equal(1, response.feed_submissions.size)
@@ -47,7 +47,7 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_feed_submission_result
-    response = GetFeedSubmissionResultResponse.format(xml_for('get_feed_submission_result'))
+    response = GetFeedSubmissionResultResponse.format(xml_for('get_feed_submission_result',200))
     assert_equal(1.02, response.document_version)
     assert_equal('M_EXAMPLE_9876543210', response.merchant_id)
 
@@ -62,15 +62,15 @@ class ResponseTest < MiniTest::Unit::TestCase
     assert_equal(1, response.message.processing_summary.messages_with_error)
     assert_equal(0, response.message.processing_summary.messages_with_warning)
 
-    assert_equal(0, response.message.result.message_id)
-    assert_equal('Error', response.message.result.result_code)
-    assert_equal(6001, response.message.result.message_code)
-    assert_equal('XML parsing fatal error at line 1, column 1: Invalid document structure', response.message.result.description)
-    assert_equal(0, response.message.result.sku)
+    assert_equal(0, response.message.results[0].message_id)
+    assert_equal('Error', response.message.results[0].result_code)
+    assert_equal(6001, response.message.results[0].message_code)
+    assert_equal('XML parsing fatal error at line 1, column 1: Invalid document structure', response.message.results[0].description)
+    assert_equal('0', response.message.results[0].sku)
   end
 
   def test_request_report
-    response = RequestReportResponse.format(xml_for('request_report'))
+    response = RequestReportResponse.format(xml_for('request_report',200))
 
     assert_equal("88faca76-b600-46d2-b53c-0c8c4533e43a", response.request_id)
 
@@ -81,7 +81,7 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_report_request_list
-    response = GetReportRequestListResponse.format(xml_for('get_report_request_list'))
+    response = GetReportRequestListResponse.format(xml_for('get_report_request_list',200))
 
     assert_equal(response.request_id, "1e1d7b22-004e-4333-a881-1f20b671097f")
     assert(response.has_next?)
@@ -90,7 +90,7 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_report_request_list_by_next_token
-    response = GetReportRequestListByNextTokenResponse.format(xml_for('get_report_request_list_by_next_token'))
+    response = GetReportRequestListByNextTokenResponse.format(xml_for('get_report_request_list_by_next_token',200))
 
     assert_equal("732480cb-84a8-4c15-9084-a46bd9a0889b", response.request_id)
     assert_equal('none', response.next_token)
@@ -102,14 +102,14 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_report_request_count
-    response = GetReportRequestCountResponse.format(xml_for('get_report_request_count'))
+    response = GetReportRequestCountResponse.format(xml_for('get_report_request_count',200))
 
     assert_equal(1276, response.count)
     assert_equal('7e155027-3741-4422-95a7-1de12703c13e', response.request_id)
   end
 
   def test_cancel_report_requests
-    response = CancelReportRequestsResponse.format(xml_for('cancel_report_requests'))
+    response = CancelReportRequestsResponse.format(xml_for('cancel_report_requests',200))
 
     assert_equal(10, response.count)
     assert_equal(1, response.report_requests.size)
@@ -117,7 +117,7 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_report_list_response
-    response = GetReportListResponse.format(xml_for('get_report_list'))
+    response = GetReportListResponse.format(xml_for('get_report_list',200))
 
     assert_equal("fbf677c1-dcee-4110-bc88-2ba3702e331b", response.request_id)
     assert(response.has_next?)
@@ -132,14 +132,14 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_report_count
-    response = GetReportCountResponse.format(xml_for('get_report_count'))
+    response = GetReportCountResponse.format(xml_for('get_report_count',200))
 
     assert_equal(166, response.count)
     assert_equal('a497aadb-5ea1-49bf-aa14-dabe914465e3', response.request_id)
   end
 
   def test_manage_report_schedule
-    response = ManageReportScheduleResponse.format(xml_for('manage_report_schedule'))
+    response = ManageReportScheduleResponse.format(xml_for('manage_report_schedule',200))
 
     assert_equal(1, response.count)
     assert_equal('7ee1bc50-5a13-4db1-afd7-1386e481984e', response.request_id)
@@ -151,7 +151,7 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_report_schedule_list_response
-    response = GetReportScheduleListResponse.format(xml_for('get_report_schedule_list'))
+    response = GetReportScheduleListResponse.format(xml_for('get_report_schedule_list',200))
 
     assert_equal("c0464157-b74f-4e52-bd1a-4ebf4bc7e5aa", response.request_id)
     assert(response.has_next?)
@@ -165,7 +165,7 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_report_schedule_list_by_next_token
-    response = GetReportScheduleListByNextTokenResponse.format(xml_for('get_report_schedule_list_by_next_token'))
+    response = GetReportScheduleListByNextTokenResponse.format(xml_for('get_report_schedule_list_by_next_token',200))
 
     assert_equal("c0464157-b74f-4e52-bd1a-4ebf4bc7e5aa", response.request_id)
     assert_equal('none', response.next_token)
@@ -177,14 +177,14 @@ class ResponseTest < MiniTest::Unit::TestCase
   end
 
   def test_get_report_schedule_count
-    response = GetReportScheduleCountResponse.format(xml_for('get_report_schedule_count'))
+    response = GetReportScheduleCountResponse.format(xml_for('get_report_schedule_count',200))
 
     assert_equal(18, response.count)
     assert_equal('21e482a8-15c7-4da3-91a4-424995ed0756', response.request_id)
   end
 
   def test_update_report_acknowledgements
-    response = UpdateReportAcknowledgementsResponse.format(xml_for('update_report_acknowledgements'))
+    response = UpdateReportAcknowledgementsResponse.format(xml_for('update_report_acknowledgements',200))
 
     assert_equal(1, response.count)
     assert_equal('42a578a7-ed92-486b-ac67-5de7464fcdfa', response.request_id)

@@ -15,7 +15,10 @@ class FeedTest < MiniTest::Unit::TestCase
         "NestedArray" => [{"NA1"=> 1}, {"NA2"=> 2}]
     } ,
     ];
-    puts Amazon::MWS::FeedBuilder.new(:product, msgs).render
-    # puts feed.xml
+    fb = Amazon::MWS::FeedBuilder.new(:product, msgs)
+    assert_instance_of FeedBuilder, fb
+    xml = fb.render
+    assert_instance_of String, xml
+    #puts xml
   end
 end

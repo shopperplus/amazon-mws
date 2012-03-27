@@ -1,9 +1,7 @@
 module Amazon
   module MWS
-
     module Feed
       include Enumerations
-      # class << self
       # The SubmitFeed operation uploads a file for processing together with
       # the necessary metadata to process the file.
 
@@ -89,9 +87,7 @@ module Amazon
       # "2008-07-03T18:12:22.093-07:00").
 
       def get_feed_submission_list(params = {})
-       response =
-       get("/", {"Action" => "GetFeedSubmissionList"}.merge(params))
-
+       response = get("/", {"Action" => "GetFeedSubmissionList"}.merge(params))
        result = GetFeedSubmissionListResponse.format(response)
       end
 
@@ -149,9 +145,7 @@ module Amazon
       # "2008-07-03T18:12:22.093-07:00").
 
       def get_feed_submission_count(params = {})
-        response =
-        get("/", {"Action" => "GetFeedSubmissionCount"}.merge(params))
-
+        response = get("/", {"Action" => "GetFeedSubmissionCount"}.merge(params))
         GetFeedSubmissionCountResponse.format(response)
       end
 
@@ -215,8 +209,7 @@ module Amazon
       # by a call to GetFeedSubmissionList.
 
       def get_feed_submission_result(feed_submission_id, params = {})
-        response =
-        get("/", {
+        response = get("/", {
           "Action"           => "GetFeedSubmissionResult",
           "FeedSubmissionId" => feed_submission_id
         }.merge(params))
@@ -227,7 +220,6 @@ module Amazon
       alias_method :feed_submission_result, :get_feed_submission_result
     end
 
-    # end
     # Feed
 
   end

@@ -1,4 +1,11 @@
-access_key: ACCESS_KEY
-secret_access_key: SECRET_ACCESS_KEY
-merchant_id: MERCHANT_ID
-marketplace_id: MARKETPLACE_ID
+production:
+  access_key: ACCESS_KEY
+  secret_access_key: SECRET_ACCESS_KEY
+  merchant_id: MERCHANT_ID
+  marketplace_id: MARKETPLACE_ID
+test:
+  access_key: opensesame
+  secret_access_key: '9876'
+  merchant_id: '12345'
+  marketplace_id: '9876'
+
