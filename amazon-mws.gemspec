@@ -3,11 +3,11 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name = %q{amazon-mws}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.authors     = ["David Michael"]
   s.email       = ["david.michael@sonymusic.com"]
-  s.homepage    = "http://github.com/adamwible/amazon-mws"
+  s.homepage    = "http://github.com/aew/amazon-mws"
   s.summary     = %q{A Ruby Wrapper for the Amazon MWS API}
   s.description = %q{A Ruby Wrapper for the Amazon MWS API}
 
