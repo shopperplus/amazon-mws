@@ -1,18 +1,16 @@
 require 'test_helper'
 
-Amazon::MWS::Base.debug = true
-
 class FeedTest < MiniTest::Unit::TestCase
   def setup
 		@config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']
 		@connection = Amazon::MWS::Base.new(@config)
-		Amazon::MWS::Base.debug = true
   end
 
-  #def test_submit_feed
-    #response = Feed.submit
-    #response = Feed.submit_feed
-  #end
+  def test_submit_feed
+  	@connection.stubs(:post).returns(xml_for('submit_feed',200)) 
+		response = @connection.submit_feed(:product_data,'Product',{ 'sku'=>'234234234234', 'product-name'=>'name name name' })
+    assert_kind_of(SubmitFeedResponse, response)
+  end
 
   def test_get_feed_submission_list_failure
     @connection.stubs(:get).returns(xml_for('error',401))

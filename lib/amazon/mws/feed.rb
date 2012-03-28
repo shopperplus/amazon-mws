@@ -14,7 +14,7 @@ module Amazon
 
       def submit_flat_file_feed(records)
         header = "sku\tproduct-id\tproduct-id-type\tprice\titem-condition\tquantity\tadd-delete\twill-ship-internationally\texpedited-shipping\titem-note\tfulfillment-center-id"
-        puts ([header] + records).join("\r")
+        #puts ([header] + records).join("\r")
         response =
           post("/", {
           "Action"   => "SubmitFeed",
@@ -28,7 +28,7 @@ module Amazon
         raise InvalidMessageType if !MESSAGE_TYPES.include?(message_type)
 
         raise "Missing merchant_id" unless @merchant_id
-        body = Amazon::MWS::FeedBuilder.new(message_type, message, {:merchant_id => @merchant_id}).render
+        body = Amazon::MWS::FeedBuilder.new(message_type, [message], {:merchant_id => @merchant_id}).render
 
         response =
           post("/", {

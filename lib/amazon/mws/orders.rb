@@ -3,57 +3,36 @@ module Amazon
     module Orders
 
       def get_orders_list(params ={})
+        query_params = { "Action"   => "ListOrders" }
+        query_params.merge!({"CreatedAfter" => params[:created_after]}) if params[:created_after]
+        query_params.merge!({"CreatedBefore" => params[:created_before]}) if params[:created_before]
+        query_params.merge!({"LastUpdatedAfter" =>params[:last_updated_after]}) if params[:last_updated_after]
+        query_params.merge!({"LastUpdatedBefore" => params[:last_updated_before]}) if params[:last_updated_before]
+        query_params.merge!({"BuyerEmail" => params[:buyer_email]}) if params[:buyer_email]
+        query_params.merge!({"SellerOrderId" => params[:seller_order_id]}) if params[:seller_order_id]
+        query_params.merge!({"MaxResultsPerPage" => params[:results_per_page]}) if params[:results_per_page]
 
-        created_after = params[:created_after]
-        created_before = params[:created_before]
-        last_updated_after = params[:last_updated_after]
-        last_updated_before = params[:last_updated_before]
-        buyer_email = params[:buyer_email]
-        seller_order_id = params[:seller_order_id]
-        results_per_page = params[:results_per_page]
-        fulfillment_channel = params[:fulfillment_channel]
-        order_status = params[:order_status]
-        marketplace_id = params[:marketplace_id]
-        raw_xml = params[:raw_xml]
-
-        query_params = {
-          "Action"   => "ListOrders"
-        }
-
-        query_params.merge!({"CreatedAfter" => created_after}) if created_after
-        query_params.merge!({"CreatedBefore" => created_before}) if created_before
-        query_params.merge!({"LastUpdatedAfter" =>last_updated_after}) if last_updated_after
-        query_params.merge!({"LastUpdatedBefore" => last_updated_before}) if last_updated_before
-        query_params.merge!({"BuyerEmail" => buyer_email}) if buyer_email
-        query_params.merge!({"SellerOrderId" => seller_order_id}) if seller_order_id
-        query_params.merge!({"MaxResultsPerPage" => results_per_page}) if results_per_page
-
-        if fulfillment_channel
-          i = 1
-          fulfillment_channel.to_a.each{|channel| query_params.merge!({"FulfillmentChannel.Channel.#{i}" => channel}); i += 1 }
+        if params[:fulfillment_channel]
+          params[:fulfillment_channel].to_a.each_with_index{|channel,i| query_params.merge!({"FulfillmentChannel.Channel.#{i+1}" => channel})}
         end
 
-        if order_status
-          i = 1
-          order_status.to_a.each{|status| query_params.merge!({"OrderStatus.Status.#{i}" => status}); i += 1 }
+        if params[:order_status]
+          params[:order_status].to_a.each_with_index{|status,i| query_params.merge!({"OrderStatus.Status.#{i+1}" => status})}
         end
 
-        if marketplace_id
-          i = 1
-          marketplace_id.to_a.each{|id| query_params.merge!({"MarketplaceId.Id.#{i}" => id}); i += 1 }
+        if params[:marketplace_id]
+          params[:marketplace_id].to_a.each_with_index{|id,i| query_params.merge!({"MarketplaceId.Id.#{i+1}" => id})}
         end
 
         response = post("/Orders/#{Authentication::VERSION}", query_params)
-        if raw_xml
+        if params[:raw_xml]
           return response
-        else
-          RequestOrdersResponse.format(response)
         end
+        RequestOrdersResponse.format(response)
       end
 
       def get_orders_list_by_next_token(params ={})
         next_token = params[:next_token]
-        raw_xml = params[:raw_xml]
 
         query_params = {
           "Action"   => "ListOrdersByNextToken"
@@ -62,16 +41,14 @@ module Amazon
           query_params.merge!({"NextToken" => next_token})
         end
         response = post("/Orders/#{Authentication::VERSION}", query_params)
-        if raw_xml
+        if params[:raw_xml]
           return response
-        else
-          RequestOrdersByNextTokenResponse.format(response)
         end
+        RequestOrdersByNextTokenResponse.format(response)
       end
 
       def get_list_order_items(params ={})
         amazon_order_id = params[:amazon_order_id]
-        raw_xml = params[:raw_xml]
 
         query_params = {
           "Action"   => "ListOrderItems"
@@ -80,7 +57,10 @@ module Amazon
           query_params.merge!({"AmazonOrderId" => amazon_order_id})
         end
         response = post("/Orders/#{Authentication::VERSION}", query_params)
-        RequestOrderItemsResponse.format(response)
+        if params[:raw_xml]
+        	return response
+        end
+       	RequestOrderItemsResponse.format(response)
       end
 
       def get_list_order_items_by_next_token(params ={})
@@ -94,32 +74,28 @@ module Amazon
           query_params.merge!({"NextToken" => next_token})
         end
         response = post("/Orders/#{Authentication::VERSION}", query_params)
-        if raw_xml
+        if params[:raw_xml]
           return response
-        else
-          RequestOrderItemsResponse.format(response)
         end
+        RequestOrderItemsResponse.format(response)
       end
 
       def get_orders(params ={})
-        amazon_order_id = params[:amazon_order_id]
-        raw_xml = params[:raw_xml]
+        amazon_order_id = 
 
         query_params = {
           "Action"   => "GetOrder"
         }
 
-        if amazon_order_id
-          i = 1
-          amazon_order_id.to_a.each{|id| query_params.merge!({"AmazonOrderId.Id.#{i}" => id}); i += 1 }
+        if params[:amazon_order_id]
+          params[:amazon_order_id].to_a.each_with_index{|id,i| query_params.merge!({"AmazonOrderId.Id.#{i+1}" => id})}
         end
 
         response = post("/Orders/#{Authentication::VERSION}", query_params)
-        if raw_xml
+        if params[:raw_xml]
           return response
-        else
-          OrdersRequest.format(response)
         end
+        OrdersRequest.format(response)
       end
 
     end

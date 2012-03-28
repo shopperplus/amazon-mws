@@ -67,12 +67,7 @@ module Amazon
       # Create the signed authentication query string.
       # Add this query string to the path WITHOUT prepending the server address.
       def prepare_path(verb, path, query_params)
-        if path.include? 'Orders'
-          query_string = authenticate_new_query_string(verb, query_params)
-        else
-          query_string = authenticate_query_string(verb, query_params)
-        end
-        #puts "path: #{path}?#{query_string}"
+        query_string = authenticate_query_string(verb, query_params)
         return "#{path}?#{query_string}"
       end
 
@@ -80,19 +75,6 @@ module Amazon
       # Takes the http method and the query string of the request and returns the authenticated query string
       def authenticate_query_string(verb, query_params = {})
         Authentication::QueryString.new(
-          :verb              => verb,
-          :query_params      => query_params,
-          :access_key        => @access_key,
-          :secret_access_key => @secret_access_key,
-          :merchant_id       => @merchant_id,
-          :marketplace_id    => @marketplace_id,
-          :server            => @server,
-          :path               => @path
-        )
-      end
-
-      def authenticate_new_query_string(verb, query_params = {})
-        Authentication::NewQueryString.new(
           :verb              => verb,
           :query_params      => query_params,
           :access_key        => @access_key,

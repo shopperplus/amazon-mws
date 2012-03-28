@@ -43,7 +43,7 @@ require 'mws/connection/management'
 require 'mws/connection/request_builder'
 require 'mws/authentication'
 require 'mws/authentication/query_string'
-require 'mws/authentication/new_query_string'
+#require 'mws/authentication/new_query_string'
 require 'mws/authentication/signature'
 
 Amazon::MWS::Base.class_eval do

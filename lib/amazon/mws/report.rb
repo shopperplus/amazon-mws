@@ -3,7 +3,6 @@ module Amazon
 
     module Report
       include Enumerations
-      class << self
 
       # The RequestReport operation requests the generation of a report, which
       # creates a report request. Reports are retained for 90 days.
@@ -16,18 +15,10 @@ module Amazon
 
       def request_report(report_type, params ={})
         raise InvalidReportType if !REPORT_TYPES.include?(report_type)
-        # These may need to be processed
-        start_date = params[:start_date]
-        end_date   = params[:end_date]
 
-        query_params = {
-          "Action"   => "RequestReport",
-          "ReportType" => REPORT_TYPES[report_type]
-        }
-
-        query_params.merge!({"StartDate" => start_date}) if start_date
-        query_params.merge!({"EndDate" => end_date}) if end_date
-
+        query_params = { "Action"   => "RequestReport", "ReportType" => REPORT_TYPES[report_type] }
+        query_params.merge!({"StartDate" => params[:start_date]}) if params[:start_date]
+        query_params.merge!({"EndDate" => params[:end_date]}) if params[:end_date]
         response = get("/", query_params)
 
         RequestReportResponse.format(response)
@@ -257,7 +248,7 @@ module Amazon
           "ReportType" => report_type
         })
 
-        ManageReportScheduleResponse.format(reponse)
+        ManageReportScheduleResponse.format(response)
       end
 
       # GetReportScheduleList
@@ -300,8 +291,6 @@ module Amazon
       end
 
       alias_method :report_schedule_count, :get_report_schedule_count
-
-    end
 
      end
   end
