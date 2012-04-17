@@ -38,7 +38,14 @@ module Amazon
         "Relationship",
         "SettlementReport"
       ]
-
+      
+      PROCESSING_STATUSES = {
+        :submitted => '_SUBMITTED_',
+        :in_progress => '_IN_PROGRESS_',
+        :done => '_DONE_',
+        :completed => '_COMPLETED_'
+      }
+      
     end
 
     end

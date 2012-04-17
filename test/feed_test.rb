@@ -10,6 +10,9 @@ class FeedTest < MiniTest::Unit::TestCase
   	@connection.stubs(:post).returns(xml_for('submit_feed',200)) 
 		response = @connection.submit_feed(:product_data,'Product',{ 'sku'=>'234234234234', 'product-name'=>'name name name' })
     assert_kind_of(SubmitFeedResponse, response)
+    assert_equal 2291326430, response.feed_submission.id
+    assert_equal Feed::Enumerations::PROCESSING_STATUSES[:submitted], response.feed_submission.feed_processing_status
+    assert_equal Feed::Enumerations::FEED_TYPES[:product_data], response.feed_submission.feed_type    
   end
 
   def test_get_feed_submission_list_failure
