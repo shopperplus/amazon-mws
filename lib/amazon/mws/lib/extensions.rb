@@ -1,4 +1,7 @@
+
 class String
+
+=begin
   if RUBY_VERSION >= '1.9'
     def valid_utf8?
       dup.force_encoding('UTF-8').valid_encoding?
@@ -11,10 +14,14 @@ class String
       false
     end
   end
+=end
 
+=begin
   def to_boolean
     (self == "true") ? true : false
   end
+=end
+
   # By default, +camelize+ converts strings to UpperCamelCase. If the argument to +camelize+
   # is set to <tt>:lower</tt> then +camelize+ produces lowerCamelCase.
   #
@@ -33,6 +40,7 @@ class String
     end
   end
 
+=begin
   def underscore
     self.gsub(/::/, '/').
     gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
@@ -40,14 +48,22 @@ class String
     tr("-", "_").
     downcase
   end
+=end
 end
 
 class Hash
+  
+=begin
   def self.from_query_string(string)
     query = string.split(/\?/)[-1]
     parts = query.split(/&|=/)
     Hash[*parts]
   end
+  
+  def to_query_string
+    self.map { |k,v| "%s=%s" % [URI.encode(k.to_s), URI.encode(v.to_s)] }.join('&') unless self.empty?
+  end  
+=end
 
   #take keys of hash and transform those to a symbols
   def self.keys_to_s(value)
@@ -63,24 +79,21 @@ class Array
     last.is_a?(::Hash) ? pop : {}
   end
 
-  def to_query_string
-    self.map { |k| "%s=%s" % [URI.encode(k[0].to_s), URI.encode(k[1].to_s)] }.join('&') unless self.empty?
-  end
+  #def to_query_string
+  #  self.map { |k| "%s=%s" % [URI.encode(k[0].to_s), URI.encode(k[1].to_s)] }.join('&') unless self.empty?
+  #end
 end
 
-class Hash
-  def to_query_string
-    self.map { |k,v| "%s=%s" % [URI.encode(k.to_s), URI.encode(v.to_s)] }.join('&') unless self.empty?
-  end
-end
-
+=begin
 class Object
   def returning(value)
     yield(value)
     value
   end
 end
+=end
 
+=begin
 module Kernel
   def __method__(depth = 0)
     caller[depth][/`([^']+)'/, 1]
@@ -117,7 +130,9 @@ module Kernel
     end
   end
 end
+=end
 
+=begin
 class Class # :nodoc:
   def cattr_reader(*syms)
     syms.flatten.each do |sym|
@@ -160,3 +175,4 @@ class Class # :nodoc:
     cattr_writer(*syms)
   end
 end if Class.instance_methods(false).grep(/^cattr_(?:reader|writer|accessor)$/).empty?
+=end

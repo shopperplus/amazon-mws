@@ -12,7 +12,7 @@ module Amazon
       def initialize(params = {})
         # These values are essential to establishing a connection
         @server            = params['server'] || Amazon::MWS::DEFAULT_HOST
-        @persistent        = params['persistent'] || false
+        #@persistent        = params['persistent'] || false
         # These values are essential to signing requests
         @access_key        = params['access_key']
         @secret_access_key = params['secret_access_key']
@@ -42,12 +42,12 @@ module Amazon
         # Prepare the Proc to be called by Net::HTTP
         proc = requester(verb, path, query_params, body)
 
-        if @persistent
-          @http.start unless @http.started?
-          proc.call
-        else
+        #if @persistent
+        #  @http.start unless @http.started?
+        #  proc.call
+        #else
           @http.start(&proc)
-        end
+        #end
       rescue Errno::EPIPE, Timeout::Error, Errno::EINVAL, EOFError
         @http = connect
         attempts == 3 ? raise : (attempts += 1; retry)

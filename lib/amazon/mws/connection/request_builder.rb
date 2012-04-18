@@ -30,10 +30,10 @@ class Amazon::MWS::Connection
     # specification), so we can check if the feed we stored for processing is bit for bit identical with what you
     # sent, protecting you from corrupted descriptive or pricing product data appearing on Amazon.com.
     #
-    def add_host
-      @request['Host'] = Amazon::MWS::DEFAULT_HOST
-      return self
-    end
+    #def add_host
+    #  @request['Host'] = Amazon::MWS::DEFAULT_HOST
+    #  return self
+    #end
 
     def add_user_agent
       @request['User-Agent'] = "Amazon::MWS/#{Amazon::MWS::Version} (Language=Ruby)"
@@ -41,7 +41,6 @@ class Amazon::MWS::Connection
     end
 
     def add_content_type
-      # nothing happening yet
       @request.content_type = "text/html; charset=iso-8859-1"
       return self
     end

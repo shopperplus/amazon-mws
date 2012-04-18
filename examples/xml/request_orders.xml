@@ -2,12 +2,12 @@
 <ListOrdersResponse xmlns="https://mws.amazonservices.com/Orders/2011-01-01">
   <ListOrdersResult>
     <NextToken>2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=</NextToken>
-    <LastUpdatedBefore>2010-10-05T18%3A12%3A20.687Z</LastUpdatedBefore>
+    <LastUpdatedBefore>2010-10-05T18:12:20.687Z</LastUpdatedBefore>
     <Orders>
       <Order>
         <AmazonOrderId>058-1233752-8214740</AmazonOrderId>
-        <PurchaseDate>2010-10-05T00%3A06%3A07.000Z</PurchaseDate>
-        <LastUpdatedDate>2010-10-05T12%3A43%3A16.000Z</LastUpdatedDate>
+        <PurchaseDate>2010-10-05T00:06:07.000Z</PurchaseDate>
+        <LastUpdatedDate>2010-10-05T12:43:16.000Z</LastUpdatedDate>
         <OrderStatus>Unshipped</OrderStatus>
         <SalesChannel>Checkout by Amazon</SalesChannel>
         <ShipServiceLevel>Std DE Dom</ShipServiceLevel>

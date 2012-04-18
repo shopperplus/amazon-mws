@@ -81,7 +81,6 @@ module Amazon
       end
 
       def get_orders(params ={})
-        amazon_order_id = 
 
         query_params = {
           "Action"   => "GetOrder"
@@ -95,7 +94,7 @@ module Amazon
         if params[:raw_xml]
           return response
         end
-        OrdersRequest.format(response)
+        RequestOrdersResponse.format(response)
       end
 
     end

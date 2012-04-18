@@ -39,7 +39,7 @@ require 'mws/base'
 require 'mws/version'
 require 'mws/exceptions'
 require 'mws/connection'
-require 'mws/connection/management'
+#require 'mws/connection/management'
 require 'mws/connection/request_builder'
 require 'mws/authentication'
 require 'mws/authentication/query_string'
@@ -54,7 +54,8 @@ end
 
 #AWS = Amazon
 
-require_library_or_gem 'xmlsimple', 'xml-simple' unless defined? XmlSimple
+#require_library_or_gem 'xmlsimple', 'xml-simple' unless defined? XmlSimple
+gem 'xml-simple'
 
 =begin
 # If libxml is installed, we use the FasterXmlSimple library, that provides most of the functionality of XmlSimple

@@ -23,10 +23,10 @@ module Amazon
         !@connection.nil?
       end
 
-      def disconnect
-        @connection.http.finish if @connection.persistent?
-        @connection = nil
-      end
+      #def disconnect
+      #  @connection.http.finish if @connection.persistent?
+      #  @connection = nil
+      #end
 
       # Wraps the current connection's request method and picks the appropriate response class to wrap the response in.
       # If the response is an error, it will raise that error as an exception. All such exceptions can be caught by rescuing

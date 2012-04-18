@@ -1,8 +1,5 @@
 require 'test_helper'
 
-class MockSignature
-end
-
 class QueryStringTest < MiniTest::Unit::TestCase
   def setup
 		@config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']

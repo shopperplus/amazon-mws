@@ -1,6 +1,7 @@
 class Amazon::MWS::Connection
 
   module Management #:nodoc:
+=begin
     def self.included(base)
       base.cattr_accessor :connections
       base.connections = {}
@@ -91,4 +92,4 @@ class Amazon::MWS::Connection
   end
 
 end
-
+=end

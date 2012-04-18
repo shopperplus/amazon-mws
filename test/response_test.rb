@@ -24,7 +24,7 @@ class ResponseTest < MiniTest::Unit::TestCase
     response = GetFeedSubmissionListByNextTokenResponse.format(xml_for('get_feed_submission_list_by_next_token',200))
 
     assert_equal("1105b931-6f1c-4480-8e97-f3b467840a9e", response.request_id)
-    assert_equal(false, response.has_next?) # same as false ???
+    assert !response.has_next?
     assert_equal('none', response.next_token)
     assert_equal(response.feed_submissions.size, 1)
     assert_equal(response.feed_submissions.first.id, 2291326430)
