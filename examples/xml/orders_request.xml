@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<GetOrderResponse xmlns="https://mws.amazonservices.com/Orders/2011-01-01">
+<GetOrderResult>
+  <Orders>
+    <Order>
+      <AmazonOrderId>133-5602332436-28234335</AmazonOrderId>
+      <PurchaseDate>2012-04-18T04:07:38.000Z</PurchaseDate>
+      <LastUpdateDate>2012-04-18T04:37:56.000Z</LastUpdateDate>
+      <OrderStatus>Unshipped</OrderStatus>
+      <SalesChannel>Amazon.com</SalesChannel>
+      <ShipServiceLevel>Std Cont US Street Addr</ShipServiceLevel>
+      <FulfillmentChannel>MFN</FulfillmentChannel>
+      <OrderTotal>
+        <CurrencyCode>USD</CurrencyCode>
+        <Amount>87.07</Amount>
+      </OrderTotal>
+      <ShippingAddress>
+        <Name>Jim Smith</Name>
+        <AddressLine1>2nd Ave</AddressLine1>
+        <City>New York</City>
+        <StateOrRegion>NY</StateOrRegion>
+        <PostalCode>11222</PostalCode>
+        <CountryCode>US</CountryCode>
+        <Phone>3052342341</Phone>
+      </ShippingAddress>
+      <NumberOfItemsShipped>0</NumberOfItemsShipped>
+      <NumberOfItemsUnshipped>1</NumberOfItemsUnshipped>
+      <PaymentMethod>Other</PaymentMethod>
+      <MarketplaceId>ATVPDKIKX0DER</MarketplaceId>
+      <BuyerEmail>8vzqb23423423xv8@marketplace.amazon.com</BuyerEmail>
+      <BuyerName>Jim Smith</BuyerName>
+      <ShipmentServiceLevelCategory>Standard</ShipmentServiceLevelCategory>
+    </Order>
+  </Orders>
+</GetOrderResult>
+<ResponseMetadata>
+  <RequestId>cf1b234a3-d934-46544-f6aa-a9c65433333e01</RequestId>
+</ResponseMetadata>
+</GetOrderResponse>

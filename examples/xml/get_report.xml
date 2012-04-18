@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AmazonEnvelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="amzn-envelope.xsd">
+<Header>
+<DocumentVersion>1.01</DocumentVersion>
+<MerchantIdentifier>M_DJFJSDK_324345</MerchantIdentifier>
+</Header>
+<MessageType>OrderReport</MessageType>
+<Message>
+<MessageID>1</MessageID>
+<OrderReport>
+<AmazonOrderID>134-5223438-49234234</AmazonOrderID>
+<AmazonSessionID>123-2343428-4234235</AmazonSessionID>
+<OrderDate>2012-03-28T05:08:03-07:00</OrderDate>
+<OrderPostedDate>2012-03-28T05:08:03-07:00</OrderPostedDate>
+<BillingData>
+<BuyerEmailAddress>01k234343@marketplace.amazon.com</BuyerEmailAddress>
+<BuyerName>Joe Smith</BuyerName>
+<BuyerPhoneNumber>55555555555</BuyerPhoneNumber>
+</BillingData>
+<FulfillmentData>
+<FulfillmentMethod>Ship</FulfillmentMethod>
+<FulfillmentServiceLevel>Standard</FulfillmentServiceLevel>
+<Address>
+<Name>Joe Smith</Name>
+<AddressFieldOne>234 Main St</AddressFieldOne>
+<City>BROOKLYN</City>
+<StateOrRegion>NEW YORK</StateOrRegion>
+<PostalCode>12234-6543</PostalCode>
+<CountryCode>US</CountryCode>
+<PhoneNumber>76543454</PhoneNumber>
+</Address>
+</FulfillmentData>
+<Item>
+<AmazonOrderItemCode>345345435454345</AmazonOrderItemCode>
+<SKU>3453454-345-M</SKU>
+<Title>Hand Warmer Black, M</Title>
+<CustomizationInfo>
+<Type>Condition</Type>
+<Data>new</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>ConditionType</Type>
+<Data>new</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>url</Type>
+<Data>http://www.amazon.com</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>CompoundTitle</Type>
+<Data>Hand Warmer Black</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>DateListed</Type>
+<Data>2010-08-21T16:48:41+00:00</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>ListingID</Type>
+<Data>122asdfdsYV</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>UPC</Type>
+<Data>7753425234543</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>MarketplaceID</Type>
+<Data>ATASDFSADFDER</Data>
+</CustomizationInfo>
+<Quantity>1</Quantity>
+<ProductTaxCode>A_GEN_NOTAX</ProductTaxCode>
+<ItemPrice>
+<Component>
+<Type>Principal</Type>
+<Amount currency="USD">121.99</Amount>
+</Component>
+<Component>
+<Type>Shipping</Type>
+<Amount currency="USD">0.00</Amount>
+</Component>
+<Component>
+<Type>Tax</Type>
+<Amount currency="USD">0.00</Amount>
+</Component>
+<Component>
+<Type>ShippingTax</Type>
+<Amount currency="USD">0.00</Amount>
+</Component>
+</ItemPrice>
+<ItemFees>
+<Fee>
+<Type>Commission</Type>
+<Amount currency="USD">-13.30</Amount>
+</Fee>
+</ItemFees>
+<ItemTaxData>
+<TaxJurisdictions>
+<TaxLocationCode>330472010</TaxLocationCode>
+<City>KLONDIKE</City>
+<County>NOT APPLICABLE</County>
+<State>NJ</State>
+</TaxJurisdictions>
+<TaxableAmounts>
+<District currency="USD">0.00</District>
+<City currency="USD">0.00</City>
+<County currency="USD">0.00</County>
+<State currency="USD">0.00</State>
+</TaxableAmounts>
+<NonTaxableAmounts>
+<District currency="USD">121.99</District>
+<City currency="USD">121.99</City>
+<County currency="USD">0.00</County>
+<State currency="USD">121.99</State>
+</NonTaxableAmounts>
+<ZeroRatedAmounts>
+<District currency="USD">0.00</District>
+<City currency="USD">0.00</City>
+<County currency="USD">121.99</County>
+<State currency="USD">0.00</State>
+</ZeroRatedAmounts>
+<TaxCollectedAmounts>
+<District currency="USD">0.00</District>
+<City currency="USD">0.00</City>
+<County currency="USD">0.00</County>
+<State currency="USD">0.00</State>
+</TaxCollectedAmounts>
+<TaxRates>
+<District>0.0000</District>
+<City>0.0000</City>
+<County>0.0000</County>
+<State>0.0000</State>
+</TaxRates>
+</ItemTaxData>
+</Item>
+<Item>
+<AmazonOrderItemCode>33468359097962</AmazonOrderItemCode>
+<SKU>1234341-256-S</SKU>
+<Title>Arm warmer black, M</Title>
+<CustomizationInfo>
+<Type>Condition</Type>
+<Data>new</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>ConditionType</Type>
+<Data>new</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>url</Type>
+<Data>http://www.amazon.com</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>CompoundTitle</Type>
+<Data>Arm Warmer Black, M</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>DateListed</Type>
+<Data>2012-01-23T16:49:12+00:00</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>ListingID</Type>
+<Data>122223434323434C</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>UPC</Type>
+<Data>77234324324</Data>
+</CustomizationInfo>
+<CustomizationInfo>
+<Type>MarketplaceID</Type>
+<Data>ATVPASDFASDFER</Data>
+</CustomizationInfo>
+<Quantity>1</Quantity>
+<ProductTaxCode>A_GEN_NOTAX</ProductTaxCode>
+<ItemPrice>
+<Component>
+<Type>Principal</Type>
+<Amount currency="USD">121.91</Amount>
+</Component>
+<Component>
+<Type>Shipping</Type>
+<Amount currency="USD">0.00</Amount>
+</Component>
+<Component>
+<Type>Tax</Type>
+<Amount currency="USD">0.00</Amount>
+</Component>
+<Component>
+<Type>ShippingTax</Type>
+<Amount currency="USD">0.00</Amount>
+</Component>
+</ItemPrice>
+<ItemFees>
+<Fee>
+<Type>Commission</Type>
+<Amount currency="USD">-13.29</Amount>
+</Fee>
+</ItemFees>
+<ItemTaxData>
+<TaxJurisdictions>
+<TaxLocationCode>123432434</TaxLocationCode>
+<City>KLONDIKE</City>
+<County>NOT APPLICABLE</County>
+<State>NJ</State>
+</TaxJurisdictions>
+<TaxableAmounts>
+<District currency="USD">0.00</District>
+<City currency="USD">0.00</City>
+<County currency="USD">0.00</County>
+<State currency="USD">0.00</State>
+</TaxableAmounts>
+<NonTaxableAmounts>
+<District currency="USD">121.91</District>
+<City currency="USD">121.91</City>
+<County currency="USD">0.00</County>
+<State currency="USD">121.91</State>
+</NonTaxableAmounts>
+<ZeroRatedAmounts>
+<District currency="USD">0.00</District>
+<City currency="USD">0.00</City>
+<County currency="USD">121.91</County>
+<State currency="USD">0.00</State>
+</ZeroRatedAmounts>
+<TaxCollectedAmounts>
+<District currency="USD">0.00</District>
+<City currency="USD">0.00</City>
+<County currency="USD">0.00</County>
+<State currency="USD">0.00</State>
+</TaxCollectedAmounts>
+<TaxRates>
+<District>0.0000</District>
+<City>0.0000</City>
+<County>0.0000</County>
+<State>0.0000</State>
+</TaxRates>
+</ItemTaxData>
+</Item>
+</OrderReport>
+</Message>
+</AmazonEnvelope>
