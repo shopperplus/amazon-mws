@@ -11,7 +11,3 @@ group :test do
     gem 'simplecov'
   end
 end
-
-# platform :ruby_19 do
-#   gem 'ruby-debug19'
-# end
