@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'rubygems'
+#require 'rubygems'
 
 if RUBY_VERSION.match("1.9")
   require 'simplecov'

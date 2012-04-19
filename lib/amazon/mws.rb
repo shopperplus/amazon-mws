@@ -1,4 +1,4 @@
-require 'rubygems'
+#require 'rubygems'
 require 'cgi'
 require 'uri'
 require 'openssl'

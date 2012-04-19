@@ -11,8 +11,6 @@ Gem::Specification.new do |s|
   s.summary     = %q{A Ruby Wrapper for the Amazon MWS API}
   s.description = %q{A Ruby Wrapper for the Amazon MWS API}
 
-  # s.rubyforge_project = "amazon-mws"
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features,examples}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
