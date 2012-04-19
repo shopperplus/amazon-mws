@@ -36,14 +36,11 @@ require 'mws/order_items_request'
 Dir.glob(File.join(File.dirname(__FILE__), 'mws/response/*.rb')).each {|f| require f }
 
 require 'mws/base'
-require 'mws/version'
 require 'mws/exceptions'
 require 'mws/connection'
-#require 'mws/connection/management'
 require 'mws/connection/request_builder'
 require 'mws/authentication'
 require 'mws/authentication/query_string'
-#require 'mws/authentication/new_query_string'
 require 'mws/authentication/signature'
 
 Amazon::MWS::Base.class_eval do

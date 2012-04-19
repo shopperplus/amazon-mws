@@ -36,7 +36,7 @@ class Amazon::MWS::Connection
     #end
 
     def add_user_agent
-      @request['User-Agent'] = "Amazon::MWS/#{Amazon::MWS::Version} (Language=Ruby)"
+      @request['User-Agent'] = "Amazon::MWS (Language=Ruby)"
       return self
     end
 
