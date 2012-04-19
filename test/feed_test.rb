@@ -11,6 +11,12 @@ class FeedTest < MiniTest::Unit::TestCase
     assert_kind_of ResponseError, response    
   end
 
+  def test_submit_flat_file_feed
+    @connection.stubs(:post).returns(xml_for('submit_feed',200))
+		response = @connection.submit_flat_file_feed(["234234234234\tname name name\t"],false)
+    assert_kind_of SubmitFeedResponse, response
+  end
+
   def test_submit_feed
   	@connection.stubs(:post).returns(xml_for('submit_feed',200)) 
 		response = @connection.submit_feed(:product_data,'Product',[{ 'sku'=>'234234234234', 'product-name'=>'name name name' }])
@@ -59,10 +65,6 @@ class FeedTest < MiniTest::Unit::TestCase
     @connection.stubs(:get).returns(xml_for('get_feed_submission_result',200))
     response = @connection.get_feed_submission_result('2342342342342342')
     assert_kind_of GetFeedSubmissionResultResponse, response    
-  end
-  
-  def test_submit_flat_file_feed
-    @connection.stubs(:get).returns(xml_for('get_feed_submission_result',200))
   end
 
 end

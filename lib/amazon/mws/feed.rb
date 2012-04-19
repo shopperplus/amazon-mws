@@ -12,15 +12,13 @@ module Amazon
       # hour. Feed size is limited to 2,147,483,647 bytes (2^32 -1) per
       # feed.
 
-      #def submit_flat_file_feed(records)
-      #  header = "sku\tproduct-id\tproduct-id-type\tprice\titem-condition\tquantity\tadd-delete\twill-ship-internationally\texpedited-shipping\titem-note\tfulfillment-center-id"
-      #  response =
-      #    post("/", {
-      #    "Action"   => "SubmitFeed",
-      #    "FeedType" => "_POST_FLAT_FILE_INVLOADER_DATA_"
-      #  }, ([header] + records).join("\r"))
-      #  result = SubmitFeedResponse.format(response)
-      #end
+      def submit_flat_file_feed(records, purge_flag = false)
+        header = "sku\tproduct-id\tproduct-id-type\tprice\titem-condition\tquantity\tadd-delete\twill-ship-internationally\texpedited-shipping\titem-note\tfulfillment-center-id"
+        query_params = {"Action" => "SubmitFeed","FeedType" => "_POST_FLAT_FILE_INVLOADER_DATA_"}
+        query_params['PurgeAndReplace'] = 'true' if purge_flag
+        response = post("/", query_params, ([header] + records).join("\r"))
+        result = SubmitFeedResponse.format(response)
+      end
 
       def submit_feed(feed_type, message_type, message = {})
         message_type= message_type.to_s.camelize
