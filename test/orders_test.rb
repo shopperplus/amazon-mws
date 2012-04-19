@@ -59,7 +59,7 @@ class OrdersTest < MiniTest::Unit::TestCase
   def test_get_list_order_items_by_next_token
   	@connection.stubs(:post).returns(xml_for('request_order_items_by_next_token',200))    
 		response = @connection.get_list_order_items_by_next_token(:next_token => '>9Sy1rjELHa2v06krKetbKrtwX7u5furPkr1n0nQYpwbNeGyEmOrLe7q8xqAchQNKurwYODTEdyqfJudhyYNc3fBN7lmKh5MlkHdivTziOHySXS65MVd54C88gfetEbGyGRFlAxb7U+eIBJtw5YQ8FDkC5gCMX3pTkWJZSz0xK1jWd/9Nyx/qDb+ZPyEg4XuzI9jEWs+xHadFX56hGcf21iVPmzhWL2hkkWxTwkMTFhirNZST/hMq2s+uAlnst6Vo8u7BHPNLl2qLGNRdpjPaV/R76L5V7brQx+mIjiAqdq7XKs1Ol1dxk5J7UX1K6D3SrVAlRqj6TtUD2s1QD6a1FegLh44xPVWbZvsy0W2YjOIO+BUh5AtWjoNqlERy2ZulUJHWppbPRMZyYJp4zi6rPGQ==')
-		assert_kind_of RequestOrderItemsResponse, response
+		assert_kind_of RequestOrderItemsByNextTokenResponse, response
 		
 		response = @connection.get_list_order_items_by_next_token(:raw_xml => true)
 		assert_kind_of Net::HTTPOK, response		

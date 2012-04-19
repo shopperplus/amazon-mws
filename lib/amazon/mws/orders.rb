@@ -77,7 +77,7 @@ module Amazon
         if params[:raw_xml]
           return response
         end
-        RequestOrderItemsResponse.format(response)
+        RequestOrderItemsByNextTokenResponse.format(response)
       end
 
       def get_orders(params ={})
