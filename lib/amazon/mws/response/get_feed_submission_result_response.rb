@@ -21,7 +21,7 @@ module Amazon
 
         xml_reader :message_id, :from => "MessageID", :as => Integer
         xml_reader :result_code
-        xml_reader :message_code, :from => "ResultMessageCode", :as => Integer
+        xml_reader :message_code, :from => "ResultMessageCode"
         xml_reader :description, :from => "ResultDescription"
         xml_reader :sku, :from => "SKU", :in => "AdditionalInfo"
       end
@@ -30,7 +30,7 @@ module Amazon
         xml_name "Message"
 
         xml_reader :id, :from => "MessageID", :as => Integer
-        xml_reader :document_transaction_id, :from => "DocumentTransactionID", :in => "ProcessingReport", :as => Integer
+        xml_reader :document_transaction_id, :from => "DocumentTransactionID", :in => "ProcessingReport"
         xml_reader :status_code, :in => "ProcessingReport"
         xml_reader :processing_summary, :as => ProcessingSummary, :in => "ProcessingReport"
         xml_reader :results, :as => [Result], :in => "ProcessingReport"

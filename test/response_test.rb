@@ -46,29 +46,6 @@ class ResponseTest < MiniTest::Unit::TestCase
     assert_equal('18e78983-bbf9-43aa-a661-ae7696cb49d4', response.request_id)
   end
 
-  def test_get_feed_submission_result
-    response = GetFeedSubmissionResultResponse.format(xml_for('get_feed_submission_result',200))
-    assert_equal(1.02, response.document_version)
-    assert_equal('M_EXAMPLE_9876543210', response.merchant_id)
-
-    assert_equal('ProcessingReport', response.message_type)
-
-    assert_equal(1, response.message.id)
-    assert_equal(2060950676, response.message.document_transaction_id)
-    assert_equal("Complete", response.message.status_code)
-
-    assert_equal(0, response.message.processing_summary.messages_processed)
-    assert_equal(0, response.message.processing_summary.messages_successful)
-    assert_equal(1, response.message.processing_summary.messages_with_error)
-    assert_equal(0, response.message.processing_summary.messages_with_warning)
-
-    assert_equal(0, response.message.results[0].message_id)
-    assert_equal('Error', response.message.results[0].result_code)
-    assert_equal(6001, response.message.results[0].message_code)
-    assert_equal('XML parsing fatal error at line 1, column 1: Invalid document structure', response.message.results[0].description)
-    assert_equal('0', response.message.results[0].sku)
-  end
-
   def test_request_report
     response = RequestReportResponse.format(xml_for('request_report',200))
 

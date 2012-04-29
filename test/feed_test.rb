@@ -81,6 +81,16 @@ class FeedTest < MiniTest::Unit::TestCase
     @connection.stubs(:get).returns(xml_for('get_feed_submission_list',200))
     response = @connection.get_feed_submission_list
     assert_kind_of GetFeedSubmissionListResponse, response
+    assert_equal true, response.has_next?
+    assert_equal '2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=', response.next_token
+    assert_equal '1105b931-6f1c-4480-8e97-f3b467840a9e', response.request_id
+    assert_equal 1, response.feed_submissions.count
+    
+    fs = response.feed_submissions.first    
+    assert_equal '2291326430', fs.id
+    assert_equal '_SUBMITTED_', fs.feed_processing_status
+    assert_equal Time.parse('2009-02-20T02:10:35+00:00'), fs.submitted_date
+    assert_equal '_POST_PRODUCT_DATA_', fs.feed_type
   end
 
   def test_get_feed_submission_list_by_next_token
@@ -104,7 +114,24 @@ class FeedTest < MiniTest::Unit::TestCase
   def test_get_feed_submission_result
     @connection.stubs(:get).returns(xml_for('get_feed_submission_result',200))
     response = @connection.get_feed_submission_result('2342342342342342')
-    assert_kind_of GetFeedSubmissionResultResponse, response    
+    assert_kind_of GetFeedSubmissionResultResponse, response
+
+    assert_equal 'ProcessingReport', response.message_type
+    assert_equal 1, response.message.id
+    assert_equal '2060950676', response.message.document_transaction_id
+    assert_equal 'Complete', response.message.status_code
+    assert_equal 0, response.message.processing_summary.messages_processed
+    assert_equal 0, response.message.processing_summary.messages_successful
+    assert_equal 1, response.message.processing_summary.messages_with_error
+    assert_equal 0, response.message.processing_summary.messages_with_warning
+    assert_equal 1, response.message.results.count
+    
+    r = response.message.results.first
+    assert_equal 0, r.message_id
+    assert_equal 'Error', r.result_code
+    assert_equal '6001', r.message_code
+    assert_equal 'XML parsing fatal error at line 1, column 1: Invalid document structure', r.description
+    assert_equal '0', r.sku
   end
 
 end
