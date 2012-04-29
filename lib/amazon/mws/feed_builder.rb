@@ -60,7 +60,12 @@ module Amazon
           case value
             when Hash  then xml.tag!(key) {|xml| build_xml(value, xml) }
             when YAML::Omap  then xml.tag!(key) {|xml| build_xml(value, xml) }
-            when Array then xml.tag!(key) {|xml| value.each {|v| build_xml(v, xml) } }
+            #when Array then xml.tag!(key) {|xml| value.each {|v| build_xml(v, xml) } }
+            when Array then 
+              case value[0]
+                when Hash then xml.tag!(key) {|xml| value.each {|v| build_xml(v, xml) } }
+                else value.each { |v| xml.tag!(key, v) } # accept array of non-hashes and create a <key>value_x</key> for each
+              end
             else xml.tag!(key, value)
           end
         }

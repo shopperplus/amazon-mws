@@ -20,12 +20,12 @@ module Amazon
         result = SubmitFeedResponse.format(response)
       end
 
-      def submit_feed(feed_type, message_type, message = {})
+      def submit_feed(feed_type, message_type, messages = [])
         message_type= message_type.to_s.camelize
         raise InvalidMessageType if !MESSAGE_TYPES.include?(message_type)
 
         raise "Missing merchant_id" unless @merchant_id
-        body = Amazon::MWS::FeedBuilder.new(message_type, message, {:merchant_id => @merchant_id}).render
+        body = Amazon::MWS::FeedBuilder.new(message_type, messages, {:merchant_id => @merchant_id}).render
 
         response =
           post("/", {
