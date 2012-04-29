@@ -6,12 +6,6 @@ module Amazon
     class FeedBuilder
       attr_accessor :xml
 
-      OPERATION_TYPES = Set.new([
-        "Update",
-        "Delete",
-        "PartialUpdate"
-      ])
-
       def initialize(message_type, messages = [], params = {})
         @xml = Builder::XmlMarkup.new
         @message_type = message_type
@@ -23,20 +17,19 @@ module Amazon
       def render
         @xml.instruct!
         @xml.AmazonEnvelope("xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", "xsi:noNamespaceSchemaLocation"=>"amzn-envelope.xsd") do
-          render_header(@params)
+          render_header
+          
           envelope_params = { :message_type => @message_type }
-          if Feed::Enumerations::PRODUCT_MESSAGE_TYPES.include?(@message_type)
-            envelope_params.merge({:operation_type => @params[:operation_type]}) if OPERATION_TYPES.include?(@params[:operation_type])
-            envelope_params.merge({:purge => @params[:purge]}) if @params[:purge]==true
-          end
+          envelope_params.merge!({:purge => @params[:purge]}) if Feed::Enumerations::PRODUCT_MESSAGE_TYPES.include?(@message_type) && @params[:purge]==true
           render_envelope(envelope_params)
+          
           @messages.each do |message|
             render_message(message, @params)
           end
         end
       end
 
-      def render_header(params = {})
+      def render_header
         @xml.Header do
           @xml.DocumentVersion "1.01"
           @xml.MerchantIdentifier @merchant_id
@@ -45,9 +38,7 @@ module Amazon
 
       def render_envelope(params = {})
         #@xml.EffectiveDate Time.now
-        #@xml.MessageID
         @xml.MessageType(params[:message_type].to_s)
-        @xml.OperationType(params[:operation_type]) if params[:operation_type]
         @xml.PurgeAndReplace(params[:purge] || false)
       end
 
@@ -66,9 +57,8 @@ module Amazon
           case value
             when Hash  then xml.tag!(key) {|xml| build_xml(value, xml) }
             when YAML::Omap  then xml.tag!(key) {|xml| build_xml(value, xml) }
-            #when Array then xml.tag!(key) {|xml| value.each {|v| build_xml(v, xml) } }
             when Array then 
-              case value[0]
+              case value.first
                 when Hash then xml.tag!(key) {|xml| value.each {|v| build_xml(v, xml) } }
                 else value.each { |v| xml.tag!(key, v) } # accept array of non-hashes and create a <key>value_x</key> for each
               end
