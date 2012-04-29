@@ -21,7 +21,7 @@ class FeedTest < MiniTest::Unit::TestCase
   	@connection.stubs(:post).returns(xml_for('submit_feed',200)) 
 
     messages = [{
-      'MessageID' => '1',
+      #'MessageID' => 2,
       'OperationType' => 'Update',
       'Product'=> {
         'SKU'=>'sku1324234324',
