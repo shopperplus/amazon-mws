@@ -5,30 +5,30 @@ class ResponseTest < MiniTest::Unit::TestCase
   def test_submit_feed_response
     response = SubmitFeedResponse.format(xml_for('submit_feed',200))
 
-    assert_equal(response.feed_submission.id, 2291326430)
-    assert_equal(response.feed_submission.feed_type, '_POST_PRODUCT_DATA_')
-    assert_equal(response.request_id, '75424a38-f333-4105-98f0-2aa9592d665c')
+    assert_equal '2291326430', response.feed_submission.id
+    assert_equal '_POST_PRODUCT_DATA_', response.feed_submission.feed_type
+    assert_equal '75424a38-f333-4105-98f0-2aa9592d665c', response.request_id
   end
 
   def test_feed_submission_list_response
     response = GetFeedSubmissionListResponse.format(xml_for('get_feed_submission_list',200))
 
-    assert_equal("1105b931-6f1c-4480-8e97-f3b467840a9e", response.request_id)
-    assert(response.has_next?)
-    assert_equal(response.next_token, "2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=")
-    assert_equal(response.feed_submissions.size, 1)
-    assert_equal(response.feed_submissions.first.id, 2291326430)
+    assert_equal "1105b931-6f1c-4480-8e97-f3b467840a9e", response.request_id
+    assert response.has_next?
+    assert_equal "2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=", response.next_token
+    assert_equal 1, response.feed_submissions.size
+    assert_equal '2291326430', response.feed_submissions.first.id
   end
 
   def test_get_feed_submission_list_by_next_token
     response = GetFeedSubmissionListByNextTokenResponse.format(xml_for('get_feed_submission_list_by_next_token',200))
 
-    assert_equal("1105b931-6f1c-4480-8e97-f3b467840a9e", response.request_id)
+    assert_equal "1105b931-6f1c-4480-8e97-f3b467840a9e", response.request_id
     assert !response.has_next?
-    assert_equal('none', response.next_token)
-    assert_equal(response.feed_submissions.size, 1)
-    assert_equal(response.feed_submissions.first.id, 2291326430)
-    assert_equal('1105b931-6f1c-4480-8e97-f3b467840a9e', response.request_id)
+    assert_equal 'none', response.next_token
+    assert_equal 1, response.feed_submissions.size
+    assert_equal '2291326430', response.feed_submissions.first.id
+    assert_equal '1105b931-6f1c-4480-8e97-f3b467840a9e', response.request_id
   end
 
   def test_get_feed_submission_count
