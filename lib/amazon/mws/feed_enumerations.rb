@@ -39,6 +39,14 @@ module Amazon
         "SettlementReport"
       ]
       
+      PRODUCT_MESSAGE_TYPES = [
+        "Product",
+        "Price",
+        "ProductImage",
+        "Relationship",
+        "Inventory"
+      ]
+      
       PROCESSING_STATUSES = {
         :submitted => '_SUBMITTED_',
         :in_progress => '_IN_PROGRESS_',

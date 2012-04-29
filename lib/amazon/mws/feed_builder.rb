@@ -8,7 +8,8 @@ module Amazon
 
       OPERATION_TYPES = Set.new([
         "Update",
-        "Delete"
+        "Delete",
+        "PartialUpdate"
       ])
 
       def initialize(message_type, messages = [], params = {})
@@ -23,7 +24,12 @@ module Amazon
         @xml.instruct!
         @xml.AmazonEnvelope("xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", "xsi:noNamespaceSchemaLocation"=>"amzn-envelope.xsd") do
           render_header(@params)
-          render_envelope(:message_type => @message_type)
+          envelope_params = { :message_type => @message_type }
+          if Feed::Enumerations::PRODUCT_MESSAGE_TYPES.include?(@message_type)
+            envelope_params.merge({:operation_type => @params[:operation_type]}) if OPERATION_TYPES.include?(@params[:operation_type])
+            envelope_params.merge({:purge => @params[:purge]}) if @params[:purge]==true
+          end
+          render_envelope(envelope_params)
           @messages.each do |message|
             render_message(message, @params)
           end
@@ -71,7 +77,5 @@ module Amazon
         }
       end
     end
-    # Feed
-
   end
 end

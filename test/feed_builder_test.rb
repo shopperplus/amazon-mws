@@ -35,8 +35,7 @@ class FeedTest < MiniTest::Unit::TestCase
           'Brand'=>'brand',
           'Designer'=>'designer',
           'Description'=>'description', # max length 2000
-          'BulletPoint'=>'bullet',
-          'BulletPoint'=>'bullet2', # max 5
+          'BulletPoint'=>nil, # max 5
           'ShippingWeight'=>{'unitOfMeasure'=>'LB', 'Value'=>'1'}, #TODO value is probably not the right term
           'MSRP'=>'5.43',
           'SearchTerms' => ['asdf1','asdf2'],
@@ -68,6 +67,5 @@ class FeedTest < MiniTest::Unit::TestCase
     #puts xml
     
   end
-  
   
 end
