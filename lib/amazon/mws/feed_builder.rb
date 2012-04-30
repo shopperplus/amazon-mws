@@ -23,9 +23,11 @@ module Amazon
           envelope_params.merge!({:purge => @params[:purge]}) if Feed::Enumerations::PRODUCT_MESSAGE_TYPES.include?(@message_type) && @params[:purge]==true
           render_envelope(envelope_params)
           
-          @messages.each_with_index do |message,i|
-            message = {'MessageID'=>i+1}.merge(message) if message[:MessageID].nil?
-            render_message(message, @params)
+          if !@messages.nil?
+            @messages.flatten.each_with_index do |message,i|
+              message = {'MessageID'=>i+1}.merge(message) if message[:MessageID].nil?
+              render_message(message, @params)
+            end
           end
         end
       end
