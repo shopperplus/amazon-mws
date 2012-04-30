@@ -90,6 +90,8 @@ class FeedTest < MiniTest::Unit::TestCase
     assert_equal '2291326430', fs.id
     assert_equal '_SUBMITTED_', fs.feed_processing_status
     assert_equal Time.parse('2009-02-20T02:10:35+00:00'), fs.submitted_date
+    assert_equal Time.parse('2009-02-20T02:12:54+00:00'), fs.started_processing_date
+    assert_equal Time.parse('2009-02-20T02:14:13+00:00'), fs.completed_processing_date
     assert_equal '_POST_PRODUCT_DATA_', fs.feed_type
   end
 
