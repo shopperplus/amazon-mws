@@ -7,7 +7,7 @@ module Amazon
       attr_accessor :xml
 
       def initialize(message_type, messages = [], params = {})
-        @xml = Builder::XmlMarkup.new
+        @xml = Builder::XmlMarkup.new(:indent=>2)
         @message_type = message_type
         @messages = messages
         @params = params
@@ -55,15 +55,24 @@ module Amazon
         end
       end
 
+      # Hack exceptional cases added for elements with 1 and 2 attributes
       def build_xml(hash, xml)
         hash.each {|key, value|
           case value
-            when Hash  then xml.tag!(key) {|xml| build_xml(value, xml) }
-            when YAML::Omap  then xml.tag!(key) {|xml| build_xml(value, xml) }
-            when Array then 
+            when Hash then xml.tag!(key) {|xml| build_xml(value, xml) }
+            when YAML::Omap then xml.tag!(key) {|xml| build_xml(value, xml) }
+            #when Array then xml.tag!(key) {|xml| value.each {|v| build_xml(v, xml) } }
+            when Array then
               case value.first
                 when Hash then xml.tag!(key) {|xml| value.each {|v| build_xml(v, xml) } }
-                else value.each { |v| xml.tag!(key, v) } # accept array of non-hashes and create a <key>value_x</key> for each
+                else # array can include hashes for attributes, but not in the first slot
+                  if value.length==2 && value[1].is_a?(Hash) && value[1].length==1 # first slot is not a hash, second might be (for attribute)
+                    xml.tag!(key, value[0], value[1])
+                  elsif value.length==3 && value[1].is_a?(Hash) && value[1].length==1 && value[2].is_a?(Hash) && value[2].length==1
+                    xml.tag!(key, value[0], value[1], value[2])
+                  else
+                    value.each { |v| xml.tag!(key, v) } # accept array of non-hashes and create a <key>value_x</key> for each
+                  end
               end
             else xml.tag!(key, value)
           end

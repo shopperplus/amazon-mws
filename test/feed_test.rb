@@ -28,18 +28,20 @@ class FeedTest < MiniTest::Unit::TestCase
         'ItemPackageQuantity'=>'1',
         'NumberOfItems'=>'1',
         'StandardProductID'=>{'Type'=>'UPC', 'Value'=>'814digitstring'},
-        'DescriptionData'=>{
-          'Title'=>'title',
-          'Brand'=>'brand',
-          'Designer'=>'designer',
-          'Description'=>'description', # max length 2000
-          'BulletPoint'=>['bp1', 'bp2'], # max 5
-          'ShippingWeight'=>{'unitOfMeasure'=>'LB', 'Value'=>'1'}, #TODO value is probably not the right term
-          'MSRP'=>'5.43',
-          'SearchTerms' => ['asdf1','asdf2'],
-          'IsGiftWrapAvailable'=>'True',
-          'IsGiftMessageAvailable'=>'True'
-        },#DescriptionData
+        'DescriptionData'=>[
+          {'Title'=>'title'},
+          {'Brand'=>'brand'},
+          {'Designer'=>'designer'},
+          {'Description'=>'description'}, # max length 2000
+          {'BulletPoint'=>'bp1'},
+          {'BulletPoint'=>'bp2'}, # max 5
+          {'ShippingWeight'=>['1'=>'2', 'unitOfMeasure'=>'LB']}, #TODO value is probably not the right term
+          {'MSRP'=>'5.43'},
+          {'SearchTerms' => 'asdf1'},
+          {'SearchTerms' => 'asdf2'},
+          {'IsGiftWrapAvailable'=>'True'},
+          {'IsGiftMessageAvailable'=>'True'}
+        ],#DescriptionData
         'ProductData' => {
           'Clothing'=>{
             "VariationData"=> {
@@ -48,12 +50,15 @@ class FeedTest < MiniTest::Unit::TestCase
               "Color"=>"color",
               "VariationTheme"=>"SizeColor"
             }, #VariationData
-            'ClassificationData'=>{
-              'ClothingType'=>'Accessory',
-              'Department'=>['d1', 'd2'], # max 10 
-              'StyleKeywords'=>['style1', 'style2'],  # max 10
-              'OccasionAndLifestyle'=>['ol1', 'ol2'] # max 10
-            }
+            'ClassificationData'=>[
+              {'ClothingType'=>'Accessory'},
+              {'Department'=>'d1'},
+              {'Department'=>'d2'}, # max 10 
+              {'StyleKeywords'=>'style1'},
+              {'StyleKeywords'=>'style2'},  # max 10
+              {'OccasionAndLifestyle'=>'ol1'},
+              {'OccasionAndLifestyle'=>'ol2'} # max 10
+            ]#ClassificationData
           }#Clothing
         }#ProductData
       }#Product
