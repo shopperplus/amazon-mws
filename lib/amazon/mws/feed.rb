@@ -27,6 +27,7 @@ module Amazon
         raise "Missing merchant_id" unless @merchant_id
         
         body = Amazon::MWS::FeedBuilder.new(message_type, messages, params.merge({:merchant_id => @merchant_id})).render
+        puts body if Amazon::MWS::Base.debug
         
         response =
           post("/", {
