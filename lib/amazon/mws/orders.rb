@@ -24,7 +24,7 @@ module Amazon
           params[:marketplace_id].to_a.each_with_index{|id,i| query_params.merge!({"MarketplaceId.Id.#{i+1}" => id})}
         end
 
-        response = post("/Orders/#{Authentication::VERSION}", query_params)
+        response = post(order_path, query_params)
         if params[:raw_xml]
           return response
         end
@@ -40,7 +40,7 @@ module Amazon
         if next_token
           query_params.merge!({"NextToken" => next_token})
         end
-        response = post("/Orders/#{Authentication::VERSION}", query_params)
+        response = post(order_path, query_params)
         if params[:raw_xml]
           return response
         end
@@ -56,7 +56,7 @@ module Amazon
         if amazon_order_id
           query_params.merge!({"AmazonOrderId" => amazon_order_id})
         end
-        response = post("/Orders/#{Authentication::VERSION}", query_params)
+        response = post(order_path, query_params)
         if params[:raw_xml]
         	return response
         end
@@ -73,7 +73,7 @@ module Amazon
         if next_token
           query_params.merge!({"NextToken" => next_token})
         end
-        response = post("/Orders/#{Authentication::VERSION}", query_params)
+        response = post(order_path, query_params)
         if params[:raw_xml]
           return response
         end
@@ -90,11 +90,16 @@ module Amazon
           params[:amazon_order_id].to_a.each_with_index{|id,i| query_params.merge!({"AmazonOrderId.Id.#{i+1}" => id})}
         end
 
-        response = post("/Orders/#{Authentication::VERSION}", query_params)
+        response = post(order_path, query_params)
         if params[:raw_xml]
           return response
         end
         RequestOrdersResponse.format(response)
+      end
+      
+      private
+      def order_path
+        "/Orders/#{Authentication::ORDERS_VERSION}"
       end
 
     end
