@@ -1,7 +1,18 @@
 module Amazon
   module MWS
-    DEFAULT_HOST = "mws.amazonservices.com"
-
+    HOSTS = {
+              :ca => "mws.amazonservices.ca",
+              :cn => "mws.amazonservices.com.cn", 
+              :de => "mws-eu.amazonservices.com",
+              :es => "mws-eu.amazonservices.com",
+              :fr => "mws-eu.amazonservices.com", 
+              :in => "mws.amazonservices.in",     
+              :it => "mws-eu.amazonservices.com",
+              :jp => "mws.amazonservices.jp",     
+              :uk => "mws-eu.amazonservices.com", 
+              :us => "mws.amazonservices.com"
+            }
+    
     class Base
       attr_accessor :connection
 

@@ -11,14 +11,15 @@ module Amazon
 
       def initialize(params = {})
         # These values are essential to establishing a connection
-        @server            = params['server'] || Amazon::MWS::DEFAULT_HOST
+        locale = (params['locale'] || "us").downcase.to_sym
+        @server            = HOSTS[locale]
         #@persistent        = params['persistent'] || false
         # These values are essential to signing requests
         @access_key        = params['access_key']
         @secret_access_key = params['secret_access_key']
         @merchant_id       = params['merchant_id']
         @marketplace_id    = params['marketplace_id']
-    		@path 						 = '/'
+        @path    		   = '/'
 
         raise MissingConnectionOptions if [@access_key, @secret_access_key, @merchant_id, @marketplace_id].any? {|option| option.nil?}
 
@@ -82,7 +83,7 @@ module Amazon
           :merchant_id       => @merchant_id,
           :marketplace_id    => @marketplace_id,
           :server            => @server,
-          :path               => @path
+          :path              => @path
         )
       end
 
