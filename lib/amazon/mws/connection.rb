@@ -2,6 +2,9 @@ module Amazon
   module MWS
 
     class Connection
+      
+      attr_reader :server, :access_key, :merchant_id, :marketplace_id
+      
       # Static/Class methods
       class << self
         def connect(options = {})
