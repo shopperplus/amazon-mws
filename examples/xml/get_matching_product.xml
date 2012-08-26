@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<GetMatchingProductResponse xmlns="http://mws.amazonservices.com/schema/Products/2011-10-01">
+<GetMatchingProductResult ASIN="B00828DQGM" status="Success">
+  <Product xmlns="http://mws.amazonservices.com/schema/Products/2011-10-01" xmlns:ns2="http://mws.amazonservices.com/schema/Products/2011-10-01/default.xsd">
+    <Identifiers>
+      <MarketplaceASIN>
+        <MarketplaceId>AAHKV2X7AFYLW</MarketplaceId>
+        <ASIN>B00828DQGM</ASIN>
+      </MarketplaceASIN>
+    </Identifiers>
+    <AttributeSets>
+      <ns2:ItemAttributes xml:lang="zh-CN">
+        <ns2:Binding>平装</ns2:Binding>
+        <ns2:Brand>中信出版股份有限公司</ns2:Brand>
+        <ns2:Edition>第1版</ns2:Edition>
+        <ns2:Feature>蒋方舟倾力推荐，读完从头哭到尾，感人程度远远超过《灿烂千阳》。</ns2:Feature>
+        <ns2:Label>中信出版社</ns2:Label>
+        <ns2:Languages>
+          <ns2:Language>
+            <ns2:Name>unknown</ns2:Name>
+          </ns2:Language>
+          <ns2:Language>
+            <ns2:Name>chinese</ns2:Name>
+          </ns2:Language>
+        </ns2:Languages>
+        <ns2:ListPrice>
+          <ns2:Amount>28.00</ns2:Amount>
+          <ns2:CurrencyCode>CNY</ns2:CurrencyCode>
+        </ns2:ListPrice>
+        <ns2:Manufacturer>中信出版社</ns2:Manufacturer>
+        <ns2:NumberOfPages>320</ns2:NumberOfPages>
+        <ns2:PackageDimensions>
+          <ns2:Height Units="inches">0.70</ns2:Height>
+          <ns2:Length Units="inches">8.10</ns2:Length>
+          <ns2:Width Units="inches">5.70</ns2:Width>
+          <ns2:Weight Units="pounds">0.97</ns2:Weight>
+        </ns2:PackageDimensions>
+        <ns2:ProductGroup>Book</ns2:ProductGroup>
+        <ns2:ProductTypeName>ABIS_BOOK</ns2:ProductTypeName>
+        <ns2:PublicationDate>2012-06-01</ns2:PublicationDate>
+        <ns2:Publisher>中信出版社</ns2:Publisher>
+        <ns2:ReleaseDate>2012-06-10</ns2:ReleaseDate>
+        <ns2:SmallImage>
+          <ns2:URL>http://ec4.images-amazon.com/images/I/515NXC6iKtL._SL75_.jpg</ns2:URL>
+          <ns2:Height Units="pixels">75</ns2:Height>
+          <ns2:Width Units="pixels">51</ns2:Width>
+        </ns2:SmallImage>
+        <ns2:Studio>中信出版社</ns2:Studio>
+        <ns2:Title>我不要你死于一事无成:给女儿的17封告别信</ns2:Title>
+      </ns2:ItemAttributes>
+    </AttributeSets>
+    <Relationships/>
+    <SalesRankings>
+      <SalesRank>
+        <ProductCategoryId>book_display_on_website</ProductCategoryId>
+        <Rank>51</Rank>
+      </SalesRank>
+      <SalesRank>
+        <ProductCategoryId>2130609051</ProductCategoryId>
+        <Rank>6</Rank>
+      </SalesRank>
+    </SalesRankings>
+  </Product>
+</GetMatchingProductResult>
+<GetMatchingProductResult ASIN="B008ZAGES4" status="Success">
+  <Product xmlns="http://mws.amazonservices.com/schema/Products/2011-10-01" xmlns:ns2="http://mws.amazonservices.com/schema/Products/2011-10-01/default.xsd">
+    <Identifiers>
+      <MarketplaceASIN>
+        <MarketplaceId>AAHKV2X7AFYLW</MarketplaceId>
+        <ASIN>B008ZAGES4</ASIN>
+      </MarketplaceASIN>
+    </Identifiers>
+    <AttributeSets>
+      <ns2:ItemAttributes xml:lang="zh-CN">
+        <ns2:Binding>电子出版物</ns2:Binding>
+        <ns2:Brand>Leicke 莱克</ns2:Brand>
+        <ns2:Color>红色</ns2:Color>
+        <ns2:Feature>方便、安全、抗震。</ns2:Feature>
+        <ns2:Feature>超薄先进设计。</ns2:Feature>
+        <ns2:Feature>手工边框压制，精准到位，体现完美品质。</ns2:Feature>
+        <ns2:Feature>表面光滑，手感舒适。四角扣位，防止机器滑落。</ns2:Feature>
+        <ns2:Feature>独特的“超纤”设计，具有呵护机身的作用。</ns2:Feature>
+        <ns2:Label>Leicke 莱克</ns2:Label>
+        <ns2:Manufacturer>Leicke 莱克</ns2:Manufacturer>
+        <ns2:PackageQuantity>1</ns2:PackageQuantity>
+        <ns2:ProductGroup>CE</ns2:ProductGroup>
+        <ns2:ProductTypeName>CONSUMER_ELECTRONICS</ns2:ProductTypeName>
+        <ns2:Publisher>Leicke 莱克</ns2:Publisher>
+        <ns2:Size>PU配米色线边</ns2:Size>
+        <ns2:SmallImage>
+          <ns2:URL>http://ec4.images-amazon.com/images/I/41lrTuxjIqL._SL75_.jpg</ns2:URL>
+          <ns2:Height Units="pixels">75</ns2:Height>
+          <ns2:Width Units="pixels">75</ns2:Width>
+        </ns2:SmallImage>
+        <ns2:Studio>Leicke 莱克</ns2:Studio>
+        <ns2:Title>Leicke 莱克 Manna iPhone 5 热定型皮套 红色疯马纹配米色线边 竖版</ns2:Title>
+      </ns2:ItemAttributes>
+    </AttributeSets>
+    <Relationships>
+      <VariationParent>
+        <Identifiers>
+          <MarketplaceASIN>
+            <MarketplaceId>AAHKV2X7AFYLW</MarketplaceId>
+            <ASIN>B008ZAGE1Q</ASIN>
+          </MarketplaceASIN>
+        </Identifiers>
+      </VariationParent>
+    </Relationships>
+    <SalesRankings/>
+  </Product>
+</GetMatchingProductResult>
+<ResponseMetadata>
+  <RequestId>7297006f-4652-4cae-81ac-988a863d4c4a</RequestId>
+</ResponseMetadata>
+</GetMatchingProductResponse>

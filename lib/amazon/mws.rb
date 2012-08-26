@@ -24,6 +24,7 @@ require 'mws/feed_enumerations'
 require 'mws/feed'
 require 'mws/report_enumerations'
 require 'mws/report'
+require 'mws/products'
 
 require 'mws/response'
 require 'mws/feed_submission'
@@ -33,6 +34,7 @@ require 'mws/report_schedule'
 require 'mws/orders'
 require 'mws/orders_request'
 require 'mws/order_items_request'
+require 'mws/product_request'
 Dir.glob(File.join(File.dirname(__FILE__), 'mws/response/*.rb')).each {|f| require f }
 
 require 'mws/base'
@@ -47,6 +49,7 @@ Amazon::MWS::Base.class_eval do
   include Amazon::MWS::Feed
   include Amazon::MWS::Report
   include Amazon::MWS::Orders
+  include Amazon::MWS::Products
 end
 
 #AWS = Amazon

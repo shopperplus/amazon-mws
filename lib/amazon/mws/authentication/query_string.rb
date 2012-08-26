@@ -12,6 +12,9 @@ class Amazon::MWS::Authentication
       if params[:path].include? 'Orders'
       	query_params['SellerId'] = params[:merchant_id]
       	query_params['Version'] = Amazon::MWS::Authentication::ORDERS_VERSION
+      elsif params[:path].include? 'Products'
+      	query_params['SellerId'] = params[:merchant_id]
+      	query_params['Version'] = Amazon::MWS::Authentication::PRODUCTS_VERSION
       else
       	query_params['Merchant'] = params[:merchant_id]
       	query_params['Version'] = Amazon::MWS::Authentication::VERSION      	
