@@ -3,7 +3,7 @@ module Amazon
 
     class Connection
       
-      attr_reader :server, :access_key, :merchant_id, :marketplace_id
+      attr_reader :server, :access_key, :merchant_id, :marketplace_id, :locale
       
       # Static/Class methods
       class << self
@@ -14,7 +14,7 @@ module Amazon
 
       def initialize(params = {})
         # These values are essential to establishing a connection
-        locale = (params['locale'] || "us").downcase.to_sym
+        @locale = (params['locale'] || "us").downcase.to_sym
         @server            = HOSTS[locale]
         #@persistent        = params['persistent'] || false
         # These values are essential to signing requests
