@@ -42,7 +42,7 @@ module Amazon
       def render_envelope(params = {})
         #@xml.EffectiveDate Time.now
         @xml.MessageType(params[:message_type].to_s)
-        @xml.PurgeAndReplace(params[:purge] || false)
+        @xml.PurgeAndReplace(params[:purge]) if params[:purge]
       end
 
       def render_message(message, params = {})
