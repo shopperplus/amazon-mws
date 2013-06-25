@@ -1,5 +1,3 @@
-require_relative 'base'
-
 module Amazon
   module MWS
 

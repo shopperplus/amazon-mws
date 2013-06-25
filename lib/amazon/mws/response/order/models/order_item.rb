@@ -1,12 +1,8 @@
+require_relative 'promotion_id'
 module Amazon
   module MWS
 
-    class PromotionId < Response
-      xml_name "PromotionId"
-      xml_reader :promotion_id
-    end
-
-    class OrderItemsRequest < Response
+    class OrderItem < Response
 
       xml_name "OrderItem"
 

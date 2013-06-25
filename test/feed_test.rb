@@ -67,8 +67,8 @@ class FeedTest < MiniTest::Unit::TestCase
 		response = @connection.submit_feed('product_data','Product',messages)
     assert_kind_of SubmitFeedResponse, response
     assert_equal '2291326430', response.feed_submission.id
-    assert_equal Feed::Enumerations::PROCESSING_STATUSES[:submitted], response.feed_submission.feed_processing_status
-    assert_equal Feed::Enumerations::FEED_TYPES[:product_data], response.feed_submission.feed_type
+    assert_equal Feed::PROCESSING_STATUSES[:submitted], response.feed_submission.feed_processing_status
+    assert_equal Feed::FEED_TYPES[:product_data], response.feed_submission.feed_type
   end
   
   def test_get_feed_submission_list_failure

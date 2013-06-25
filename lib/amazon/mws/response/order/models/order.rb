@@ -1,7 +1,7 @@
 module Amazon
   module MWS
 
-    class OrdersRequest < Response
+    class Order < Response
 
       xml_name "Order"
 

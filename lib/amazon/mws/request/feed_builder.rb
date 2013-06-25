@@ -20,7 +20,7 @@ module Amazon
           render_header
           
           envelope_params = { :message_type => @message_type }
-          envelope_params.merge!({:purge => @params[:purge]}) if Feed::Enumerations::PRODUCT_MESSAGE_TYPES.include?(@message_type) && @params[:purge]==true
+          envelope_params.merge!({:purge => @params[:purge]}) if Feed::PRODUCT_MESSAGE_TYPES.include?(@message_type) && @params[:purge]==true
           render_envelope(envelope_params)
           
           if !@messages.nil?

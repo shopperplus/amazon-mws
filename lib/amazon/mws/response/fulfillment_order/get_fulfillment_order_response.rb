@@ -1,4 +1,6 @@
-require_relative 'base'
+require_relative 'models/fulfillment_order'
+require_relative 'models/fulfillment_order_item'
+require_relative 'models/fulfillment_shipment'
 
 module Amazon
   module MWS

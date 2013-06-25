@@ -1,3 +1,5 @@
+require_relative 'models/feed_submission'
+
 module Amazon
   module MWS
 

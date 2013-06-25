@@ -1,3 +1,5 @@
+require_relative 'models/product'
+
 module Amazon
   module MWS
 

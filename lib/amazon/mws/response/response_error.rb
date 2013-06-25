@@ -11,5 +11,11 @@ module Amazon
       xml_reader :request_id
     end
 
+    class RequestTimeout < ResponseError
+    end
+
+    class InternalError < ResponseError
+    end
+
   end
 end

@@ -1,3 +1,5 @@
+require_relative 'models/report_request'
+
 module Amazon
   module MWS
 

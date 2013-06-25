@@ -1,3 +1,5 @@
+require_relative 'models/report_schedule'
+
 module Amazon
   module MWS
 
