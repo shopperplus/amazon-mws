@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class ConnectionTest < MiniTest::Unit::TestCase
+class ConnectionTest < Minitest::Test
   def setup
-		@config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']
-		@connection = Amazon::MWS::Base.new(@config)
+    @config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']
+    @connection = Amazon::MWS::Base.new(@config)
   end
 
   def test_connection_functions

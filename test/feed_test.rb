@@ -1,24 +1,24 @@
 require 'test_helper'
 
-class FeedTest < MiniTest::Unit::TestCase
+class FeedTest < Minitest::Test
   def setup
-		@config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']
-		@connection = Amazon::MWS::Base.new(@config)
+    @config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']
+    @connection = Amazon::MWS::Base.new(@config)
   end
 
   def test_submit_feed_non_stubbed
-		response = @connection.submit_feed(:product_data,'Product',[{ 'sku'=>'234234234234', 'product-name'=>'name name name' }])
+    response = @connection.submit_feed(:product_data,'Product',[{ 'sku'=>'234234234234', 'product-name'=>'name name name' }])
     assert_kind_of ResponseError, response    
   end
 
   def test_submit_flat_file_feed
     @connection.stubs(:post).returns(xml_for('submit_feed',200))
-		response = @connection.submit_flat_file_feed(["234234234234\tname name name\t"],false)
+    response = @connection.submit_flat_file_feed(["234234234234\tname name name\t"],false)
     assert_kind_of SubmitFeedResponse, response
   end
 
   def test_submit_feed
-  	@connection.stubs(:post).returns(xml_for('submit_feed',200)) 
+    @connection.stubs(:post).returns(xml_for('submit_feed',200)) 
 
     messages = [{
       #'MessageID' => 2,

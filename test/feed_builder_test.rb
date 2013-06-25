@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FeedTest < MiniTest::Unit::TestCase
+class FeedTest < Minitest::Test
   def setup
   end
 

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SignatureTest < MiniTest::Unit::TestCase
+class SignatureTest < Minitest::Test
   def setup
     #@expected_base64 = "F8zvW31wDYENPZrwkVYaPOLHh2R+goZncb0SlwTwyes="
     @expected_base64 = "JYhNqz8a5iDPZn+igV4ixr3MdU3A+1w6rQR0ocneNLU="

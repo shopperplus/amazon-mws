@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ResponseTest < MiniTest::Unit::TestCase
+class ResponseTest < Minitest::Test
 
   def test_submit_feed_response
     response = SubmitFeedResponse.format(xml_for('submit_feed',200))

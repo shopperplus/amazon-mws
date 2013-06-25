@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProductsTest < MiniTest::Unit::TestCase
+class ProductsTest < Minitest::Test
 
   def setup
     @config = YAML.load_file( File.join(File.dirname(__FILE__), 'test_config.yml') )['test']
