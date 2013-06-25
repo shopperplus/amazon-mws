@@ -56,7 +56,7 @@ module Amazon
     class InvalidConnectionOption < InvalidOption
       def initialize(invalid_options)
         message = "The following connection options are invalid: #{invalid_options.join(', ')}. "    +
-                  "The valid connection options are: #{Connection::Options::VALID_OPTIONS.join(', ')}."
+        "The valid connection options are: #{Connection::Options::VALID_OPTIONS.join(', ')}."
         super(message)
       end
     end
@@ -75,6 +75,12 @@ module Amazon
         super("\nPlease use Amazon::MWS::Base.establish_connection! before making API calls.")
       end
     end
+
+    class InvalidParams < MWSException
+      def initialize(params)
+        super("\nInvalid Params For The Request! Please Pass Correct Params #{params.inspect} to Build The Request.")
+      end
+    end 
 
   end
 end
