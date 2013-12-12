@@ -94,7 +94,7 @@ module Amazon
         if params[:raw_xml]
           return response
         end
-        RequestOrdersResponse.format(response)
+        RequestGetOrderResponse.format(response)
       end
       
       private
