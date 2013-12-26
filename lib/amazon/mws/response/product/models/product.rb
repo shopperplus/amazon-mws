@@ -27,6 +27,8 @@ module Amazon
 
       xml_reader :list_price, :in => "xmlns:AttributesSets/ns2:ItemAttributes/ns2:ListPrice", :namespace => "ns2", :from => "Amount"
       xml_reader :list_price_currency_code, :in => "xmlns:AttributesSets/ns2:ItemAttributes/ns2:ListPrice", :namespace => "ns2", :from => "CurrencyCode"
+      
+      xml_reader :categories, :in => "xmlns:SalesRankings/xmlns:SalesRank", :from => "ProductCategoryId", :as => []
 
     end
   end
