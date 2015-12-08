@@ -2,7 +2,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name = %q{amazon-mws}
+  s.name = %q{amazon-mws-plus}
   s.version = "0.1.3"
 
   s.authors     = ["David Michael", "A. Edward Wible"]
